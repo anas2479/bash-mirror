@@ -1,0 +1,27 @@
+{
+  "name": "commandline-school",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-js": "webpack",
+    "build-css":"node-sass src/scss/main.scss dist/css/styles.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anas2479/command-line-school.git"
+  },
+  "author": "Anas Mohamed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anas2479/command-line-school/issues"
+  },
+  "homepage": "https://github.com/anas2479/command-line-school#readme",
+  "devDependencies": {
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "node-sass": "^5.0.0",
+    "webpack": "^5.26.0"
+  }
+}
