@@ -7203,8 +7203,9 @@ a.text-dark:hover, a.text-dark:focus {
   color: white;
   border-radius: 5px; }
   .cmd_env .command-input {
-    width: 100%;
-    background-color: #070C1C;
-    color: white;
-    outline: none;
-    border: none; }
+    width: 100%; }
+    .cmd_env .command-input input {
+      background-color: #070C1C;
+      color: white;
+      outline: none;
+      border: none; }

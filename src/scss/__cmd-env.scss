@@ -16,10 +16,15 @@ $cmd_bg : #070C1C;
     // command input
     .command-input{
         width: 100%;
-        background-color: $cmd_bg;
-        color: white;
-        outline: none;
-        border: none;
+        
+        // input
+        input{
+            background-color: $cmd_bg;
+            color: white;
+            outline: none;
+            border: none;
+        }
+        
     }
 }
 
