@@ -1,0 +1,23 @@
+/*!
+*
+* Command line window component styles
+*
+*/
+
+$cmd_bg : #070C1C;
+
+.cmd_env{
+    max-width: 1000px;
+    min-height: 500px;
+    background-color: $cmd_bg;
+    color: white;
+    border-radius: 5px;
+
+    // command input
+    .command-input{
+        width: 100%;
+        background-color: $cmd_bg;
+        color: white;
+    }
+}
+
