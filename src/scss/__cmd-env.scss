@@ -13,13 +13,20 @@ $cmd_bg : #070C1C;
     color: white;
     border-radius: 5px;
     padding: 0 10px;
+    display: block;
 
     // command input
-    .command-input{
+    .command-input-container{
         width: 100%;
+
+        &:not(:last-child){
+            display: none;
+        }
         
         // input
         input{
+            width: 90%;
+            min-height: 20px;
             background-color: $cmd_bg;
             color: white;
             outline: none;

@@ -7202,10 +7202,15 @@ a.text-dark:hover, a.text-dark:focus {
   background-color: #070C1C;
   color: white;
   border-radius: 5px;
-  padding: 0 10px; }
-  .cmd_env .command-input {
+  padding: 0 10px;
+  display: block; }
+  .cmd_env .command-input-container {
     width: 100%; }
-    .cmd_env .command-input input {
+    .cmd_env .command-input-container:not(:last-child) {
+      display: none; }
+    .cmd_env .command-input-container input {
+      width: 90%;
+      min-height: 20px;
       background-color: #070C1C;
       color: white;
       outline: none;
