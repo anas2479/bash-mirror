@@ -12,12 +12,23 @@ $cmd_bg : #070C1C;
     background-color: $cmd_bg;
     color: white;
     border-radius: 5px;
-    padding: 0 10px;
+    padding: 15px 15px;
     display: block;
+
+    .info{
+        color: rgba(white , .6);
+        font-style: italic;
+
+        p{
+            margin-bottom: 0;
+        }
+    }
 
     // command input
     .command-input-container{
         width: 100%;
+        display: flex;
+        align-items: center;
 
         &:not(:last-child){
             display: none;
@@ -25,8 +36,8 @@ $cmd_bg : #070C1C;
         
         // input
         input{
-            width: 90%;
-            min-height: 20px;
+            width: 98%;
+            height: auto;
             background-color: $cmd_bg;
             color: white;
             outline: none;
@@ -34,5 +45,14 @@ $cmd_bg : #070C1C;
         }
         
     }
+
+
+    // command output
+    .command-output-container{
+        display: flex;
+        align-items: start;
+    }
+
+    
 }
 
