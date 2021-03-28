@@ -71,7 +71,7 @@ module.exports = function cmd_init(){
             if (input === ''){
                 cmd.innerHTML += `<br>`
             }else{
-                runCommand(input)
+                runCommand(input.trim())
             }
         
             commandInput.value = ''
