@@ -29,16 +29,6 @@ eval("\r\n\r\n\r\nmodule.exports = function clear(userInput){\r\n\r\n    let cmd
 
 /***/ }),
 
-/***/ "./src/js/commands/config_commands.js":
-/*!********************************************!*\
-  !*** ./src/js/commands/config_commands.js ***!
-  \********************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-eval("\r\nconst help_command = __webpack_require__(/*! ./help_command */ \"./src/js/commands/help_command.js\");\r\nconst clear_command = __webpack_require__(/*! ./clear-command */ \"./src/js/commands/clear-command.js\");\r\nconst test = __webpack_require__(/*! ./test */ \"./src/js/commands/test.js\");\r\n\r\n\r\nmodule.exports =  [\r\n\r\n    {\r\n        name:'Help',\r\n        command:'help',\r\n        useCase : \"Used when you need help or a command doesn't work.⛑\",\r\n        function:help_command\r\n        \r\n    },\r\n\r\n    {\r\n        name:'Clear',\r\n        command:'clear',\r\n        function:clear_command,\r\n        useCase:\"Used when you want to clear the windo.🧹\"\r\n    },\r\n\r\n\r\n    {\r\n        name:'test',\r\n        command:'test',\r\n        function:test,\r\n        useCase:\"Test command for dev purposes.👩‍💻\"\r\n    }\r\n\r\n\r\n    \r\n]\n\n//# sourceURL=webpack://commandline-school/./src/js/commands/config_commands.js?");
-
-/***/ }),
-
 /***/ "./src/js/commands/help_command.js":
 /*!*****************************************!*\
   !*** ./src/js/commands/help_command.js ***!
@@ -76,7 +66,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _cmd
   \********************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("/*\r\n* Import the array of objects representing the commands from config_commands\r\n*/\r\nconst commands = __webpack_require__(/*! ./commands/config_commands */ \"./src/js/commands/config_commands.js\")\r\n\r\n\r\n\r\n\r\n\r\n\r\nlet cmd = document.getElementById('cmdEnvironment');\r\n\r\n\r\nmodule.exports = function runCommand(userInput){\r\n    \r\n    commands.find(function(command){\r\n        \r\n        if (userInput === command.command){\r\n            command.function(userInput); \r\n        }\r\n        //  else{\r\n        //     cmd.innerHTML += `\r\n        //       <span> <i class=\"fas fa-angle-right angle\"></i>${userInput}</span>\r\n        //       <p>Command doesn't exist yet!!</p>\r\n        //       `\r\n        // }\r\n    })\r\n\r\n    \r\n}\n\n//# sourceURL=webpack://commandline-school/./src/js/run-commands.js?");
+eval(" // import all the commands\r\n const help_command = __webpack_require__(/*! ./commands/help_command */ \"./src/js/commands/help_command.js\");\r\n const clear_command = __webpack_require__(/*! ./commands/clear-command */ \"./src/js/commands/clear-command.js\");\r\n const test = __webpack_require__(/*! ./commands/test */ \"./src/js/commands/test.js\");\r\n\r\n\r\n\r\n\r\n\r\nlet cmd = document.getElementById('cmdEnvironment');\r\n\r\n\r\nmodule.exports = function runCommand(userInput){\r\n    \r\n    \r\n\r\n    switch (userInput){\r\n        case 'help':\r\n            help_command(userInput)\r\n            break;\r\n        case 'clear':\r\n            clear_command(userInput)\r\n            break;\r\n        case 'test':\r\n            test(userInput)\r\n            break;\r\n        \r\n        default:\r\n            cmd.innerHTML += `\r\n                 <span> <i class=\"fas fa-angle-right angle\"></i>${userInput}</span>\r\n                 <p>Command doesn't exist yet!!</p>\r\n                 `\r\n    }\r\n    \r\n}\n\n//# sourceURL=webpack://commandline-school/./src/js/run-commands.js?");
 
 /***/ })
 
