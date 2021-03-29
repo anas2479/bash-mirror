@@ -1,6 +1,6 @@
 const help = require('./commands/help_command')
 
-
+const _ = require('lodash')
 
 //commands 
 const runCommand = require('./run-commands')
@@ -66,12 +66,14 @@ module.exports = function cmd_init(){
 
         if (event.key === 'Enter'){
 
-            let input = commandInput.value
+            let input = _.words(commandInput.value)
+
+
             
             if (input === ''){
                 cmd.innerHTML += `<br>`
             }else{
-                runCommand(input.trim())
+                runCommand(input)
             }
         
             commandInput.value = ''
