@@ -7,7 +7,7 @@ const runCommand = require('./run-commands')
 
 let version = 0.1
 
-let cmd = document.getElementById('cmdEnvironment');
+let cmdElement = document.getElementById('cmdEnvironment');
 
 // Create the angle element 
 let angle = document.createElement('i')
@@ -27,7 +27,7 @@ commandInputContainer.setAttribute('class', 'command-input-container')
 
 
 
-module.exports = function cmd_init(){
+module.exports = function cmd(){
     
     let cmdInfo = {
         title : 'Web based Command Line',
@@ -41,7 +41,7 @@ module.exports = function cmd_init(){
     commandInputContainer.appendChild(commandInput)
     
 
-    cmd.innerHTML = `
+    cmdElement.innerHTML = `
 
         <div class="info"> 
             <p>${cmdInfo.title}</p>
@@ -52,12 +52,12 @@ module.exports = function cmd_init(){
 
 
     // Append the inputContainer to the cmd
-    cmd.appendChild(commandInputContainer)
+    cmdElement.appendChild(commandInputContainer)
 
 
     // event listener to bring the input into focus
-    cmd.addEventListener('click', ()=>{
-        cmd.lastChild.lastChild.focus()
+    cmdElement.addEventListener('click', ()=>{
+        cmdElement.lastChild.lastChild.focus()
     })
 
 
@@ -71,13 +71,13 @@ module.exports = function cmd_init(){
 
             
             if (input === ''){
-                cmd.innerHTML += `<br>`
+                cmdElement.innerHTML += `<br>`
             }else{
                 runCommand(input)
             }
         
             commandInput.value = ''
-            cmd.appendChild(commandInputContainer)
+            cmdElement.appendChild(commandInputContainer)
             commandInput.focus()
 
             
