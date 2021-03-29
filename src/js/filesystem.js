@@ -14,6 +14,7 @@ module.exports = function fileSystem(command){
             subfolders:[],
             files:[]
         })
+        cmd.innerHTML += `<p>Created <b>${command[1]}</b> folder.🎉</p>`
         console.log(allFolders)
     }
 
