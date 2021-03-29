@@ -69,8 +69,8 @@ module.exports = function cmd(){
             let input = _.words(commandInput.value)
 
 
-            
-            if (input === ''){
+            console.log(input)
+            if (input.length  === 0){
                 cmdElement.innerHTML += `<br>`
             }else{
                 runCommand(input)
