@@ -66,7 +66,7 @@ module.exports = function cmd(){
 
         if (event.key === 'Enter'){
 
-            let input = _.words(commandInput.value)
+            let input = _.words(commandInput.value, /[^ ]+/g)
 
 
             console.log(input)
