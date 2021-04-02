@@ -9,12 +9,13 @@ let cmd = document.getElementById('cmdEnvironment')
 module.exports = function fileSystem(command){
 
     if (command[0] === 'mkdir'){
+        let newFolderName = _.join(command.slice(1, 100), ' ')
         allFolders.push({
-            name:command[1],
+            name: newFolderName,
             subfolders:[],
             files:[]
         })
-        cmd.innerHTML += `<p>Created <b>${command[1]}</b> folder.🎉</p>`
+        cmd.innerHTML += `<p>Created <b>${newFolderName}</b> folder.🎉</p>`
         console.log(allFolders)
     }
 
