@@ -1,0 +1,23 @@
+
+
+[
+    {
+        "name":"help",
+        "useCase":"Lists all the existing commands. Used when you need help.⛑"
+    },
+
+    {
+        "name":"clear",
+        "useCase":"Clears everything on the screen. Used when you want to start fresh.✨"
+    },
+
+    {
+        "name":"mkdir",
+        "useCase":"Creates a new directory.📁"
+    },
+
+    {
+        "name":"dir",
+        "useCase":"Lists all the existing derictories.📃"
+    }
+]
