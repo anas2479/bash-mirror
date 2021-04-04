@@ -4,7 +4,7 @@
  const clear_command = require('./commands/clear-command');
  const test = require('./commands/test');
 
-
+const _ = require('lodash')
 
 
 
@@ -36,7 +36,7 @@ module.exports = function runCommand(userInput){
         
         default:
             cmd.innerHTML += `
-                 <span> <i class="fas fa-angle-right angle"></i>${userInput}</span>
+                 <span> <i class="fas fa-angle-right angle"></i>${_.join(userInput, ' ')}</span>
                  <p>Command doesn't exist yet!!</p>
                  `
     }
