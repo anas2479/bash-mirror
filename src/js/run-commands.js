@@ -17,7 +17,7 @@ module.exports = function runCommand(userInput){
 
     switch (userInput[0]){
         case 'help':
-            help_command(userInput[0])
+            help_command(userInput)
             break;
         case 'clear':
             clear_command(userInput)
