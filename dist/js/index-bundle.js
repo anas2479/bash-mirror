@@ -39,13 +39,24 @@ eval("\r\n\r\n\r\nmodule.exports = function clear(userInput){\r\n\r\n    let cmd
 
 /***/ }),
 
+/***/ "./src/js/commands/commands.json":
+/*!***************************************!*\
+  !*** ./src/js/commands/commands.json ***!
+  \***************************************/
+/***/ ((module) => {
+
+"use strict";
+eval("module.exports = JSON.parse('[{\"name\":\"help\",\"useCase\":\"Lists all the existing commands. Used when you need help.⛑\"},{\"name\":\"clear\",\"useCase\":\"Clears everything on the screen. Used when you want to start fresh.✨\"},{\"name\":\"mkdir\",\"useCase\":\"Creates a new directory.📁\"},{\"name\":\"dir\",\"useCase\":\"Lists all the existing derictories.📃\"}]');\n\n//# sourceURL=webpack://commandline-school/./src/js/commands/commands.json?");
+
+/***/ }),
+
 /***/ "./src/js/commands/help_command.js":
 /*!*****************************************!*\
   !*** ./src/js/commands/help_command.js ***!
   \*****************************************/
-/***/ ((module) => {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("\r\n\r\nmodule.exports = function help(userInput){\r\n    \r\n    let cmd = document.getElementById('cmdEnvironment');\r\n\r\n    cmd.innerHTML += `\r\n    <span>\r\n    <i class=\"fas fa-angle-right\" aria-hidden=\"true\"></i>${userInput}</span>\r\n    <ul>\r\n       <li>Help :  Used when you need help or a command doesn't work.⛑</li>\r\n\r\n       <li>Clear:  Used when you want to clear the windo.🧹</li>\r\n\r\n       <li>Test:   Test command for dev purposes.👩‍💻</li>\r\n    </ul>\r\n    `\r\n  \r\n    \r\n}\n\n//# sourceURL=webpack://commandline-school/./src/js/commands/help_command.js?");
+eval("\r\nconst commands = __webpack_require__(/*! ./commands.json */ \"./src/js/commands/commands.json\")\r\n\r\n\r\nmodule.exports = function help(userInput){\r\n    \r\n    let cmd = document.getElementById('cmdEnvironment');\r\n\r\n    commands.forEach((command)=>{\r\n       cmd.innerHTML += `\r\n            <p> <b>${command.name}</b> &nbsp ----> &nbsp <i>${command.useCase}</i></p>\r\n       `\r\n    })\r\n\r\n\r\n    // cmd.innerHTML += `\r\n    // <span>\r\n    // <i class=\"fas fa-angle-right\" aria-hidden=\"true\"></i>${userInput}</span>\r\n    // <ul>\r\n    //    <li>Help :  Used when you need help or a command doesn't work.⛑</li>\r\n\r\n    //    <li>Clear:  Used when you want to clear the windo.🧹</li>\r\n\r\n    //    <li>Test:   Test command for dev purposes.👩‍💻</li>\r\n    // </ul>\r\n    // `\r\n  \r\n    \r\n}\n\n//# sourceURL=webpack://commandline-school/./src/js/commands/help_command.js?");
 
 /***/ }),
 
