@@ -2,7 +2,19 @@
 const _ = require('lodash')
 
 
-let allFolders = []
+let allFolders = [
+    {
+        name:"test folder",
+        subfolders:[],
+        files:[]
+    },
+
+    {
+        name:"Another test folder",
+        subfolders:[],
+        files:[]
+    }
+]
 
 
 
