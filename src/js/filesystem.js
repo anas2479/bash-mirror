@@ -7,6 +7,8 @@ let allFolders = []
 
 
 let cmd = document.getElementById('cmdEnvironment')
+
+
 module.exports = function fileSystem(command){
 
     
@@ -68,4 +70,46 @@ module.exports = function fileSystem(command){
             }
         }
     }
+
+
+    else if (command[0] === 'rmdir'){
+
+        if(command.length > 1){// check if the user wrote more after the `rmdir`
+
+            // set folderName to the words after the `del` command
+            let folderName = _.join(command.slice(1, 100), ' ')
+            
+            // if a folder with `folderName` value is found in the allFolders array...
+            if(allFolders.find((folder)=> folder.name === folderName)){
+                
+                // ...remove that folder and return it as removedFolder
+                let removedFolder = _.remove(allFolders, (folder)=>{
+                    return folder.name === folderName
+                })
+                
+                cmd.innerHTML += `
+                <p> successfully deleted <b>${folderName}</b> directory. 🚽</p>
+            
+                `
+            }else{
+                cmd.innerHTML += `
+                <p><b>${folderName}</b> directory does not exist. 😕</p>
+                <p>Try the command <b>dir</b> to see a list of existing directories and files in the current derectory.</b></p>
+                `
+            }
+
+
+        }else{
+            cmd.innerHTML += `
+            <p> You did not provide a folder name to delete. 😕</p>
+            <p> Try <b>rmdir <i>folder name</i></b> </p>
+            `
+        }
+        
+        
+    }
+
+
+
+
 }

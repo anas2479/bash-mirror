@@ -33,6 +33,10 @@ module.exports = function runCommand(userInput){
         case 'dir':
             fileSystem(userInput);
             break;
+
+        case 'rmdir':
+            fileSystem(userInput);
+            break;
         
         default:
             cmd.innerHTML += `
