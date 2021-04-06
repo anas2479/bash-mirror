@@ -2,8 +2,9 @@ const help = require('./commands/help_command')
 
 const _ = require('lodash')
 
-//commands 
-const runCommand = require('./run-commands')
+const allCommands = require('./commands.config')
+
+
 
 let version = 0.0
 
@@ -76,8 +77,18 @@ module.exports = function cmd(){
                 cmdElement.innerHTML += `<br>`
 
             }else{// else (if the user wrote something)....
-                //....then call the runCommand with the user's input
-                runCommand(input)
+
+                // if there is a command with a name that matches the user input...
+                if (allCommands.find((command)=> command.name === input[0])){
+                    //...find that command....
+                    let command = _.find(allCommands, {name:input[0]})
+                    command.function(input)
+                }else{
+                    cmd.innerHTML += `
+                    <span> <i class="fas fa-angle-right angle"></i>${_.join(input, ' ')}</span>
+                    <p>Command doesn't exist yet!!</p>
+                    `
+                }
             }
         
             // reset the value of the input to none.
