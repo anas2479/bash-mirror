@@ -29,6 +29,16 @@ eval("const help = __webpack_require__(/*! ./commands/help_command */ \"./src/js
 
 /***/ }),
 
+/***/ "./src/js/commands.config.js":
+/*!***********************************!*\
+  !*** ./src/js/commands.config.js ***!
+  \***********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("// import all the commands\r\nconst fileSystem = __webpack_require__(/*! ./filesystem */ \"./src/js/filesystem.js\")\r\nconst help_command = __webpack_require__(/*! ./commands/help_command */ \"./src/js/commands/help_command.js\");\r\nconst clear_command = __webpack_require__(/*! ./commands/clear-command */ \"./src/js/commands/clear-command.js\");\r\nconst test = __webpack_require__(/*! ./commands/test */ \"./src/js/commands/test.js\");\r\n\r\n\r\n\r\n\r\nmodule.exports = [\r\n    {\r\n        name:\"help\",\r\n        function:help_command\r\n    },\r\n\r\n    {\r\n        name:\"clear\",\r\n        function:clear_command\r\n    },\r\n\r\n    {\r\n        name:\"mkdir\",\r\n        function:fileSystem\r\n    },\r\n\r\n\r\n    {\r\n        name:\"rmdir\",\r\n        function:fileSystem\r\n    },\r\n\r\n    {\r\n        name:\"dir\",\r\n        function:fileSystem\r\n    }\r\n    \r\n]\n\n//# sourceURL=webpack://commandline-school/./src/js/commands.config.js?");
+
+/***/ }),
+
 /***/ "./src/js/commands/clear-command.js":
 /*!******************************************!*\
   !*** ./src/js/commands/clear-command.js ***!
@@ -87,7 +97,7 @@ eval("\r\nconst _ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lo
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _cmd__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cmd */ \"./src/js/cmd.js\");\n/* harmony import */ var _cmd__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_cmd__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _run_commands__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./run-commands */ \"./src/js/run-commands.js\");\n/* harmony import */ var _run_commands__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_run_commands__WEBPACK_IMPORTED_MODULE_1__);\n\r\n\r\n\r\n\r\n// Import CMD\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n_cmd__WEBPACK_IMPORTED_MODULE_0___default()()\r\n\r\n\r\n\n\n//# sourceURL=webpack://commandline-school/./src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _cmd__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cmd */ \"./src/js/cmd.js\");\n/* harmony import */ var _cmd__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_cmd__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\n\r\n\r\n// Import CMD\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n_cmd__WEBPACK_IMPORTED_MODULE_0___default()()\r\n\r\n\r\n\n\n//# sourceURL=webpack://commandline-school/./src/js/index.js?");
 
 /***/ }),
 
@@ -97,7 +107,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _cmd
   \********************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval(" // import all the commands\r\n const fileSystem = __webpack_require__(/*! ./filesystem */ \"./src/js/filesystem.js\")\r\n const help_command = __webpack_require__(/*! ./commands/help_command */ \"./src/js/commands/help_command.js\");\r\n const clear_command = __webpack_require__(/*! ./commands/clear-command */ \"./src/js/commands/clear-command.js\");\r\n const test = __webpack_require__(/*! ./commands/test */ \"./src/js/commands/test.js\");\r\n\r\nconst _ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\")\r\n\r\n\r\n\r\nlet cmd = document.getElementById('cmdEnvironment');\r\n\r\n\r\nmodule.exports = function runCommand(userInput){\r\n    \r\n    \r\n\r\n    switch (userInput[0]){\r\n        case 'help':\r\n            help_command(userInput)\r\n            break;\r\n        case 'clear':\r\n            clear_command(userInput)\r\n            break;\r\n        case 'test':\r\n            test(userInput)\r\n            break;\r\n        \r\n        case 'mkdir':\r\n            fileSystem(userInput);\r\n            break\r\n\r\n        case 'dir':\r\n            fileSystem(userInput);\r\n            break;\r\n\r\n        case 'rmdir':\r\n            fileSystem(userInput);\r\n            break;\r\n        \r\n        default:\r\n            cmd.innerHTML += `\r\n                 <span> <i class=\"fas fa-angle-right angle\"></i>${_.join(userInput, ' ')}</span>\r\n                 <p>Command doesn't exist yet!!</p>\r\n                 `\r\n    }\r\n    \r\n}\n\n//# sourceURL=webpack://commandline-school/./src/js/run-commands.js?");
+eval("\r\nconst _ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\")\r\n\r\nconst allCommands = __webpack_require__(/*! ./commands.config */ \"./src/js/commands.config.js\")\r\n\r\n\r\nlet cmd = document.getElementById('cmdEnvironment');\r\n\r\n\r\n/*\r\n*runCommand\r\n------------\r\n* takes userInput which is the input by the user as parameter\r\n*/\r\n\r\nmodule.exports = function runCommand(userInput){\r\n    \r\n    // if there is a command with a name that matches the user input...\r\n    if (allCommands.find((command)=> command.name === userInput[0])){\r\n        //...find that command....\r\n        let command = _.find(allCommands, {name:userInput[0]})\r\n        command.function(userInput)\r\n    }else{\r\n        cmd.innerHTML += `\r\n        <span> <i class=\"fas fa-angle-right angle\"></i>${_.join(userInput, ' ')}</span>\r\n        <p>Command doesn't exist yet!!</p>\r\n        `\r\n    }\r\n\r\n    \r\n}\n\n//# sourceURL=webpack://commandline-school/./src/js/run-commands.js?");
 
 /***/ })
 
