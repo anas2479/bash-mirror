@@ -5,7 +5,7 @@ const _ = require('lodash')
 //commands 
 const runCommand = require('./run-commands')
 
-let version = 0.1
+let version = 0.0
 
 let cmdElement = document.getElementById('cmdEnvironment');
 
