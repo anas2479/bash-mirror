@@ -61,23 +61,30 @@ module.exports = function cmd(){
     })
 
 
-    // event listener for when the user enters a command
+    // If the user pressed a key on the keyboard....
     commandInput.addEventListener('keydown', function(event){
 
+        //... and that key is the Enter key...
         if (event.key === 'Enter'){
 
+            //...convert whatever thay wrote into an array of words.
             let input = _.words(commandInput.value, /[^ ]+/g)
 
-
-            console.log(input)
+            // If that array is empty (user din't write anything)....
             if (input.length  === 0){
+                //...add a line-break to the cmdElement (the window).
                 cmdElement.innerHTML += `<br>`
-            }else{
+
+            }else{// else (if the user wrote something)....
+                //....then call the runCommand with the user's input
                 runCommand(input)
             }
         
+            // reset the value of the input to none.
             commandInput.value = ''
+            // re-add that input to the window
             cmdElement.appendChild(commandInputContainer)
+            // set it on focus
             commandInput.focus()
 
             
