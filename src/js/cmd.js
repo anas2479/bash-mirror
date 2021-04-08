@@ -1,4 +1,4 @@
-const help = require('./commands/help_command')
+
 
 const _ = require('lodash')
 
