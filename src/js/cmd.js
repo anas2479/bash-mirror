@@ -1,4 +1,4 @@
-const help = require('./commands/help_command')
+
 
 const _ = require('lodash')
 
@@ -84,7 +84,7 @@ module.exports = function cmd(){
                     let command = _.find(allCommands, {name:input[0]})
                     command.function(input)
                 }else{
-                    cmd.innerHTML += `
+                    cmdElement.innerHTML += `
                     <span> <i class="fas fa-dollar-sign"></i>${_.join(input, ' ')}</span>
                     <p>Command doesn't exist yet!!</p>
                     `
