@@ -10,9 +10,9 @@ let version = 0.0
 
 let cmdElement = document.getElementById('cmdEnvironment');
 
-// Create the angle element 
-let angle = document.createElement('i')
-angle.setAttribute('class', 'fas fa-angle-right angle')
+// Create the dollar element 
+let dollar = document.createElement('i')
+dollar.setAttribute('class', 'fas fa-dollar-sign')
 
 
 
@@ -22,7 +22,7 @@ commandInput.setAttribute('autofocus', true)
 
 
 
-// Create the container for the input and the angle element
+// Create the container for the input and the dollar element
 let commandInputContainer = document.createElement('span')
 commandInputContainer.setAttribute('class', 'command-input-container')
 
@@ -37,8 +37,8 @@ module.exports = function cmd(){
     }
 
 
-    // Append the angle and input elements to the container
-    commandInputContainer.appendChild(angle)
+    // Append the dollar and input elements to the container
+    commandInputContainer.appendChild(dollar)
     commandInputContainer.appendChild(commandInput)
     
 
@@ -85,7 +85,7 @@ module.exports = function cmd(){
                     command.function(input)
                 }else{
                     cmd.innerHTML += `
-                    <span> <i class="fas fa-angle-right angle"></i>${_.join(input, ' ')}</span>
+                    <span> <i class="fas fa-dollar-sign"></i>${_.join(input, ' ')}</span>
                     <p>Command doesn't exist yet!!</p>
                     `
                 }
