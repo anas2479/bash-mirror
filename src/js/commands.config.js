@@ -1,5 +1,5 @@
 // import all the commands
-const fileSystem = require('./filesystem')
+const fileSystem = require('./commands/file-system/filesystem')
 const help_command = require('./commands/help_command');
 const clear_command = require('./commands/clear-command');
 const test = require('./commands/test');
