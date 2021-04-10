@@ -2,40 +2,49 @@
 const _ = require('lodash')
 
 
-let allFolders = [
-    {
-        name:"test folder",
-        subfolders:[],
-        files:[]
-    },
-
-    {
-        name:"Another test folder",
-        subfolders:[],
-        files:[]
-    }
-]
-
-
+let allFolders = require('./folders')
 
 let cmd = document.getElementById('cmdEnvironment')
 
 
+
 module.exports = function fileSystem(command){
+    let currentFolder
+    if(command[0] === 'cd'){
+        let folderName = _.join(command.slice(1, 100), ' ')
+
+        currentFolder = allFolders.findIndex((folder)=> folder.name === folderName)
+       
+        
+        
+    }
 
     
-    if (command[0] === 'mkdir'){// Check if the first word is `mkdir`.
-        if (command.length > 1){// Then check if there is more after `mkdir`.
-
+    else if (command[0] === 'mkdir'){// Check if the first word is `mkdir`.
+        if (command.length > 1){// If the user didn't only write `mkdir`
+            console.log(currentFolder)
             // set newFolderName to the words after the `mkdir` command
             let newFolderName = _.join(command.slice(1, 100), ' ')
-            allFolders.push({ // push it to the allFolders array as a new object    
-                name: newFolderName,
-                subfolders:[],
-                files:[]
-            })
-            cmd.innerHTML += `<p>Created <b>${newFolderName}</b> directory.🎉</p>`
-            console.log(allFolders)
+            if(currentFolder != undefined){
+                
+                allFolders[currentFolder].subfolders.push({
+                    name: newFolderName,
+                    subfolders:[],
+                    files:[]
+                })
+                console.log(allFolders)
+
+                
+            }else{
+                allFolders.push({ // push it to the allFolders array as a new object    
+                    name: newFolderName,
+                    subfolders:[],
+                    files:[]
+                })
+                cmd.innerHTML += `<p>Created <b>${newFolderName}</b> directory.🎉</p>`
+                console.log(allFolders)     
+            }
+            
         }else{// if the user only entered `mkdir`, then ask them to provide a dir name.
             cmd.innerHTML += `
             <p>Directory name was <b>not</b> provided. ☹</p>
