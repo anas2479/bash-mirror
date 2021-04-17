@@ -36,8 +36,8 @@ module.exports = [
     },
 
     {
-        name:"dir",
-        function:fileSystem.dir
+        name:"ls",
+        function:fileSystem.ls
     }
     
 ]

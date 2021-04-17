@@ -112,7 +112,7 @@ function mkdir(command){
 
 
 
-function dir(command){
+function ls(command){
 
     if (command.length === 1){// make sure the user only wrote `dir` keyword
 
@@ -183,7 +183,7 @@ function rmdir(command){
 module.exports = {
     cd,
     mkdir,
-    dir,
+    ls,
     rmdir,
     printPath
 }
