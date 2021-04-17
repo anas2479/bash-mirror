@@ -19,19 +19,25 @@ module.exports = [
     },
 
     {
+        name:'cd',
+        function:fileSystem.cd
+
+    },
+
+    {
         name:"mkdir",
-        function:fileSystem
+        function:fileSystem.mkdir
     },
 
 
     {
         name:"rmdir",
-        function:fileSystem
+        function:fileSystem.rmdir
     },
 
     {
         name:"dir",
-        function:fileSystem
+        function:fileSystem.dir
     }
     
 ]
