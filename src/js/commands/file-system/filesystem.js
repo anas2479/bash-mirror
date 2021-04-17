@@ -114,16 +114,19 @@ function mkdir(command){
 
 function ls(command){
 
-    if (command.length === 1){// make sure the user only wrote `dir` keyword
+    if (command.length === 1){// make sure the user only wrote `ls` keyword
 
-        if(currentFolder.subfolders.length > 0){// check if sub folders exist
+        // check if the current folder
+        // has any subfolders or files
+        if(currentFolder.subfolders.length > 0 || currentFolder.files.length > 0 ){
+
             // create a list `ul` element
             let folderList = document.createElement('ul')
 
-            currentFolder.subfolders.forEach((folder)=>{// for each folder inside the current folder
+            // create a list item `li`
+            let listItem = document.createElement('li')
 
-                // create a list item `li`
-                let listItem = document.createElement('li')
+            currentFolder.subfolders.forEach((folder)=>{// for each folder inside the current folder
 
                 // intert the folder name into the list item `li`
                 listItem.innerHTML = folder.name
@@ -134,15 +137,28 @@ function ls(command){
                 //append folderList into the cmd element.
                 cmd.appendChild(folderList)
             })
+
+
+            currentFolder.files.forEach((file)=>{// for each file inside the current folder
+
+                // intert the file name into the list item `li`
+                listItem.innerHTML = file.name
+
+                //append list item to the folderList
+                folderList.appendChild(listItem)
+
+                //append folderList into the cmd element.
+                cmd.appendChild(folderList)
+            })
+
         }else{
             cmd.innerHTML += `
             <p>No content inside the current directory. ☹</p>
             <p> Try <b> mkdir my directory</b> to create one.</p>
             `
         }
-        
 
-    }else{// the user wrote more than the `dir` keyword
+    }else{// the user wrote more than the `ls` keyword
         cmd.innerHTML += `
         <span> <i class="fas fa-angle-right angle"></i>${_.join(command, ' ')}</span>
         <p>Command doesn't exist yet!!</p>
@@ -180,9 +196,35 @@ function rmdir(command){
 }
 
 
+function touch(command){
+
+    if(command.length > 1){//check user provided a file name
+
+        // set fileName to the words after the `touch` keyword
+        let fileName = _.join(command.slice(1, maxNameSize), ' ')
+
+        let newFile = {
+            name:fileName,
+
+        }
+
+        currentFolder.files.push(newFile)
+        cmd.innerHTML += `
+        <p>Created <b>✨${fileName}✨</b> file.</p>
+        `
+
+    }else{// user only wrote `touch` keyword.
+        cmd.innerHTML += `
+        <p>No file name was provided 😟</p>
+        `
+    }
+    
+}
+
 module.exports = {
     cd,
     mkdir,
+    touch,
     ls,
     rmdir,
     printPath

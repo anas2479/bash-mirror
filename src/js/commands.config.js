@@ -38,6 +38,11 @@ module.exports = [
     {
         name:"ls",
         function:fileSystem.ls
+    },
+
+    {
+        name:"touch",
+        function:fileSystem.touch
     }
     
 ]
