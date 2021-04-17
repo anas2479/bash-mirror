@@ -4,7 +4,7 @@ const _ = require('lodash')
 
 const allCommands = require('./commands.config')
 
-
+const fileSystem = require('./commands/file-system/filesystem')
 
 let version = 0.0
 
@@ -90,6 +90,9 @@ module.exports = function cmd(){
                     `
                 }
             }
+            
+            // print the path of the current directory
+            cmdElement.innerHTML += `<p>${fileSystem.printPath()}</p>`
         
             // reset the value of the input to none.
             commandInput.value = ''

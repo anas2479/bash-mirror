@@ -1,5 +1,5 @@
 // import all the commands
-const fileSystem = require('./filesystem')
+const fileSystem = require('./commands/file-system/filesystem')
 const help_command = require('./commands/help_command');
 const clear_command = require('./commands/clear-command');
 const test = require('./commands/test');
@@ -19,19 +19,35 @@ module.exports = [
     },
 
     {
+        name:'cd',
+        function:fileSystem.cd
+
+    },
+
+    {
         name:"mkdir",
-        function:fileSystem
+        function:fileSystem.mkdir
     },
 
 
     {
         name:"rmdir",
-        function:fileSystem
+        function:fileSystem.rm
     },
 
     {
-        name:"dir",
-        function:fileSystem
+        name:"rm",
+        function:fileSystem.rm
+    },
+
+    {
+        name:"ls",
+        function:fileSystem.ls
+    },
+
+    {
+        name:"touch",
+        function:fileSystem.touch
     }
     
 ]
