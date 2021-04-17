@@ -32,7 +32,12 @@ module.exports = [
 
     {
         name:"rmdir",
-        function:fileSystem.rmdir
+        function:fileSystem.rm
+    },
+
+    {
+        name:"rm",
+        function:fileSystem.rm
     },
 
     {

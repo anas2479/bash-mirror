@@ -167,29 +167,63 @@ function ls(command){
    
 }
 
-function rmdir(command){
-    if(command.length > 1){// check if the user wrote more after the `rmdir` keyword
+function rm(command){
+
+    // check if the user wrote more after the `rmdir`/`rm` keywords
+    if(command.length > 1){
         
-        // set folderName to the words after the `del` keyword
-        let folderName = _.join(command.slice(1, maxNameSize), ' ')
+        // set name to the words after the `del` keyword
+        let name = _.join(command.slice(1, maxNameSize), ' ')
 
-        // find a folder with the name specified by the user (folderName)
-        let match = _.find(currentFolder.subfolders,{name:folderName})
+        
+        // if the user wrote `rm` (they wanted to delete a file)
+        if(command[0] === 'rm'){
+            
+            //find a file with the name specified by the user
+            let fileMatch =  _.find(currentFolder.files,{name:name})
 
-        // If such folder is found, remove it
-        if (match != undefined) {
-            let removed = _.remove(currentFolder.subfolders, (folder)=>{
-                return folder.name === match.name
-            })
-            cmd.innerHTML += `
-                <p> successfully deleted <b>${folderName}</b> directory. 🚽</p>
-            `
-            console.log(removed)
-        }else{// match was not found
-            cmd.innerHTML += `
-                <p><b>${folderName}</b> directory does not exist. 😕</p>
-                <p>Try the command <b>dir</b> to see a list of existing directories and files in the current derectory.</b></p>
+            // if such file was found, remove it
+            if(fileMatch != undefined){
+                let removed = _.remove(currentFolder.files, (file)=>{
+                    return file.name === file.name
+                })
+                cmd.innerHTML += `
+                    <p> successfully deleted <b>${name}</b> file. 🚽</p>
                 `
+            }else{
+                cmd.innerHTML += `
+                <p>no such <b>file</b> was found.</p>
+                <p>if you wanted to delete a folder instead, use <b>rmdir</b></p>
+                `
+            }
+
+
+        }
+
+        
+        // If the user wrote `rmdir` (they want to delete a directory)
+        if (command[0] === 'rmdir'){
+
+            // find a folder with the name specified by the user (name)
+            let folderMatch = _.find(currentFolder.subfolders,{name:name})
+
+            // If such folder is found, remove it
+            if (folderMatch != undefined) {
+                let removed = _.remove(currentFolder.subfolders, (folder)=>{
+                    return folder.name === folderMatch.name
+                })
+                cmd.innerHTML += `
+                    <p> successfully deleted <b>${name}</b> directory. 🚽</p>
+                `
+                console.log(removed)
+            }else{// match was not found
+                cmd.innerHTML += `
+                    <p><b>${name}</b> directory does not exist. 😕</p>
+                    <p>Try the command <b>dir</b> to see a list of existing directories and files in the current derectory.</b></p>
+                    `
+            }
+
+
         }
 
     }
@@ -226,6 +260,6 @@ module.exports = {
     mkdir,
     touch,
     ls,
-    rmdir,
+    rm,
     printPath
 }
