@@ -123,10 +123,12 @@ function ls(command){
             // create a list `ul` element
             let folderList = document.createElement('ul')
 
-            // create a list item `li`
-            let listItem = document.createElement('li')
+            
 
             currentFolder.subfolders.forEach((folder)=>{// for each folder inside the current folder
+
+                // create a list item `li`
+                let listItem = document.createElement('li')
 
                 // intert the folder name into the list item `li`
                 listItem.innerHTML = folder.name
@@ -140,7 +142,9 @@ function ls(command){
 
 
             currentFolder.files.forEach((file)=>{// for each file inside the current folder
-
+                
+                // create a list item `li`
+                let listItem = document.createElement('li')
                 // intert the file name into the list item `li`
                 listItem.innerHTML = file.name
 
