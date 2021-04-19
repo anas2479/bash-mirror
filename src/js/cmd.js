@@ -10,9 +10,10 @@ let version = 0.0
 
 let cmdElement = document.getElementById('cmdEnvironment');
 
-// Create the dollar element 
-let dollar = document.createElement('i')
-dollar.setAttribute('class', 'fas fa-dollar-sign')
+// Create the commandLineSign element 
+let commandLineSign = document.createElement('i')
+commandLineSign.innerHTML = '$'
+commandLineSign.setAttribute('class', 'command-line-sign')
 
 
 
@@ -22,9 +23,12 @@ commandInput.setAttribute('autofocus', true)
 
 
 
-// Create the container for the input and the dollar element
+// Create the container for the input and the commandLineSign element
 let commandInputContainer = document.createElement('span')
 commandInputContainer.setAttribute('class', 'command-input-container')
+
+let commandOutputContainer = document.createElement('div')
+commandOutputContainer.setAttribute('class','command-output-container')
 
 
 
@@ -37,8 +41,8 @@ module.exports = function cmd(){
     }
 
 
-    // Append the dollar and input elements to the container
-    commandInputContainer.appendChild(dollar)
+    // Append the commandLineSign and input elements to the container
+    commandInputContainer.appendChild(commandLineSign)
     commandInputContainer.appendChild(commandInput)
     
 
@@ -84,18 +88,21 @@ module.exports = function cmd(){
                     let command = _.find(allCommands, {name:input[0]})
                     command.function(input)
                 }else{
-                    cmdElement.innerHTML += `
-                    <span> <i class="fas fa-dollar-sign"></i>${_.join(input, ' ')}</span>
+                    commandOutputContainer.innerHTML += `
+                    <p></i>${_.join(input, ' ')}</p>
                     <p>Command doesn't exist yet!!</p>
                     `
                 }
             }
+            
+            cmdElement.appendChild(commandOutputContainer)
             
             // print the path of the current directory
             cmdElement.innerHTML += `<p>${fileSystem.printPath()}</p>`
         
             // reset the value of the input to none.
             commandInput.value = ''
+            commandOutputContainer.innerHTML =''
             // re-add that input to the window
             cmdElement.appendChild(commandInputContainer)
             // set it on focus
