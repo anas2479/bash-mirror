@@ -81,6 +81,14 @@ module.exports = function cmd(){
                 cmdElement.innerHTML += `<br>`
 
             }else{// else (if the user wrote something)....
+                
+
+                cmdElement.innerHTML += `
+                <div class="user-input">
+                    <span>$</span>  <span class="command-keyword">${input[0]}</span>
+                    <span>${input.slice(1)}</span>
+                </div>
+                `
 
                 // if there is a command with a name that matches the user input...
                 if (allCommands.find((command)=> command.name === input[0])){
@@ -89,11 +97,12 @@ module.exports = function cmd(){
                     command.function(input)
                 }else{
                     commandOutputContainer.innerHTML += `
-                    <p></i>${_.join(input, ' ')}</p>
                     <p>Command doesn't exist yet!!</p>
                     `
                 }
             }
+
+             
             
             cmdElement.appendChild(commandOutputContainer)
             
