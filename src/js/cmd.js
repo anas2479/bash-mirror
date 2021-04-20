@@ -11,6 +11,10 @@ let version = 0.0
 
 let cmdElement = document.getElementById('cmdEnvironment');
 
+
+let contentContainer = cmdConfig.contentContainer
+
+
 // Create the commandLineSign element 
 let commandLineSign = document.createElement('i')
 commandLineSign.innerHTML = '$'
@@ -46,7 +50,7 @@ module.exports = function cmd(){
     commandInputContainer.appendChild(commandInput)
     
 
-    cmdElement.innerHTML = `
+    contentContainer.innerHTML = `
 
         <div class="info"> 
             <p>${cmdInfo.title}</p>
@@ -55,13 +59,14 @@ module.exports = function cmd(){
         </div>
     `
 
+    cmdElement.appendChild(contentContainer)
 
     // Append the inputContainer to the cmd
-    cmdElement.appendChild(commandInputContainer)
+    contentContainer.appendChild(commandInputContainer)
 
 
     // event listener to bring the input into focus
-    cmdElement.addEventListener('click', ()=>{
+    contentContainer.addEventListener('click', ()=>{
         cmdElement.lastChild.lastChild.focus()
     })
 
@@ -78,12 +83,12 @@ module.exports = function cmd(){
             // If that array is empty (user din't write anything)....
             if (input.length  === 0){
                 //...add a line-break to the cmdElement (the window).
-                cmdElement.innerHTML += `<br>`
+                contentContainer.innerHTML += `<br>`
 
             }else{// else (if the user wrote something)....
                 
 
-                cmdElement.innerHTML += `
+                contentContainer.innerHTML += `
                 <div class="user-input">
                     <span>$</span>  <span class="command-keyword">${input[0]}</span>
                     <span>${input.slice(1)}</span>
@@ -104,16 +109,16 @@ module.exports = function cmd(){
 
              
             
-            cmdElement.appendChild(commandOutputContainer)
+            contentContainer.appendChild(commandOutputContainer)
             
             // print the path of the current directory
-            cmdElement.innerHTML += `<p>${fileSystem.printPath()}</p>`
+            contentContainer.innerHTML += `<p class="current-path">${fileSystem.printPath()}</p>`
         
             // reset the value of the input to none.
             commandInput.value = ''
             commandOutputContainer.innerHTML =''
             // re-add that input to the window
-            cmdElement.appendChild(commandInputContainer)
+            contentContainer.appendChild(commandInputContainer)
             // set it on focus
             commandInput.focus()
 
