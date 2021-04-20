@@ -1,6 +1,7 @@
 
 
-const _ = require('lodash')
+const _ = require('lodash');
+const cmdConfig = require('./cmd.config');
 
 const allCommands = require('./commands.config')
 
@@ -27,8 +28,7 @@ commandInput.setAttribute('autofocus', true)
 let commandInputContainer = document.createElement('span')
 commandInputContainer.setAttribute('class', 'command-input-container')
 
-let commandOutputContainer = document.createElement('div')
-commandOutputContainer.setAttribute('class','command-output-container')
+let commandOutputContainer = cmdConfig.commandOutputContainer
 
 
 
