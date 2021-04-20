@@ -120,16 +120,27 @@ function ls(command){
         // has any subfolders or files
         if(currentFolder.subfolders.length > 0 || currentFolder.files.length > 0 ){
 
+            // create an icon that will be next to every folder on the list
+            let folderIcon = document.createElement('img')
+            folderIcon.src = 'imgs/folder.svg'
+
             // create a list `ul` element
             let folderList = document.createElement('ul')
 
-            // create a list item `li`
-            let listItem = document.createElement('li')
+
 
             currentFolder.subfolders.forEach((folder)=>{// for each folder inside the current folder
 
+                // create a list item `li`
+                let listItem = document.createElement('li')
+
+                let folderIcon = document.createElement('img')
+                folderIcon.src = 'imgs/folder.svg'
+
+
                 // intert the folder name into the list item `li`
-                listItem.innerHTML = folder.name
+                listItem.appendChild(folderIcon)
+                listItem.innerHTML += folder.name
 
                 //append list item to the folderList
                 folderList.appendChild(listItem)
@@ -141,8 +152,15 @@ function ls(command){
 
             currentFolder.files.forEach((file)=>{// for each file inside the current folder
 
+                // create a list item `li`
+                let listItem = document.createElement('li')
+
+                let fileIcon = document.createElement('img')
+                fileIcon.src = 'imgs/file-text.svg'
+
                 // intert the file name into the list item `li`
-                listItem.innerHTML = file.name
+                listItem.appendChild(fileIcon)
+                listItem.innerHTML += file.name
 
                 //append list item to the folderList
                 folderList.appendChild(listItem)
