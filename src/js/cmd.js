@@ -33,7 +33,7 @@ module.exports = function cmd(){
     let cmdInfo = {
         title : 'Web based Command Line',
         version : version,
-        repoLink:'https://github.com/anas2479/command-line-school'
+        repoLink:'https://github.com/anas2479/web-cl'
     }
 
 
