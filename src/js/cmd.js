@@ -91,7 +91,7 @@ module.exports = function cmd(){
                 contentContainer.innerHTML += `
                 <div class="user-input">
                     <span>$</span>  <span class="command-keyword">${input[0]}</span>
-                    <span>${input.slice(1)}</span>
+                    <span>${_.join(input.slice(1),' ')}</span>
                 </div>
                 `
 
