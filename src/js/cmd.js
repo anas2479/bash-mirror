@@ -79,7 +79,7 @@ module.exports = function cmd(){
 
     // event listener to bring the input into focus
     contentContainer.addEventListener('click', ()=>{
-        cmdElement.lastChild.lastChild.focus()
+        commandInput.focus()
     })
 
 
