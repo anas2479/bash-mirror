@@ -12,6 +12,18 @@ let version = 0.0
 let cmdElement = document.getElementById('cmdEnvironment');
 
 
+let header = document.createElement('div')
+header.setAttribute('class', 'cmd_env-header')
+
+let logo = document.createElement('img')
+logo.src = "imgs/chimppen.svg"
+
+header.appendChild(logo)
+header.innerHTML += `
+<span>Web Command-Line</span>`
+
+cmdElement.appendChild(header)
+
 let contentContainer = cmdConfig.contentContainer
 
 
