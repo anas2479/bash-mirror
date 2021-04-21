@@ -1,18 +1,36 @@
 
-
-const _ = require('lodash')
+const version = require('../../package.json').version
+const _ = require('lodash');
+const cmdConfig = require('./cmd.config');
 
 const allCommands = require('./commands.config')
 
 const fileSystem = require('./commands/file-system/filesystem')
 
-let version = 0.0
+
 
 let cmdElement = document.getElementById('cmdEnvironment');
 
-// Create the dollar element 
-let dollar = document.createElement('i')
-dollar.setAttribute('class', 'fas fa-dollar-sign')
+
+let header = document.createElement('div')
+header.setAttribute('class', 'cmd_env-header')
+
+let logo = document.createElement('img')
+logo.src = "imgs/chimppen.svg"
+
+header.appendChild(logo)
+header.innerHTML += `
+<span>Web Command-Line</span>`
+
+cmdElement.appendChild(header)
+
+let contentContainer = cmdConfig.contentContainer
+
+
+// Create the commandLineSign element 
+let commandLineSign = document.createElement('i')
+commandLineSign.innerHTML = '$'
+commandLineSign.setAttribute('class', 'command-line-sign')
 
 
 
@@ -22,9 +40,11 @@ commandInput.setAttribute('autofocus', true)
 
 
 
-// Create the container for the input and the dollar element
+// Create the container for the input and the commandLineSign element
 let commandInputContainer = document.createElement('span')
 commandInputContainer.setAttribute('class', 'command-input-container')
+
+let commandOutputContainer = cmdConfig.commandOutputContainer
 
 
 
@@ -37,28 +57,28 @@ module.exports = function cmd(){
     }
 
 
-    // Append the dollar and input elements to the container
-    commandInputContainer.appendChild(dollar)
+    // Append the commandLineSign and input elements to the container
+    commandInputContainer.appendChild(commandLineSign)
     commandInputContainer.appendChild(commandInput)
     
 
-    cmdElement.innerHTML = `
+    contentContainer.innerHTML = `
 
         <div class="info"> 
             <p>${cmdInfo.title}</p>
-            <p>Version ${cmdInfo.version}</p>
-            <a href="${cmdInfo.repoLink}" style="color:white;"><i class="fab fa-github-alt"></i></a>
+            <a href="${cmdInfo.repoLink}" style="color:white;">Version ${cmdInfo.version}</a>
         </div>
     `
 
+    cmdElement.appendChild(contentContainer)
 
     // Append the inputContainer to the cmd
-    cmdElement.appendChild(commandInputContainer)
+    contentContainer.appendChild(commandInputContainer)
 
 
     // event listener to bring the input into focus
-    cmdElement.addEventListener('click', ()=>{
-        cmdElement.lastChild.lastChild.focus()
+    contentContainer.addEventListener('click', ()=>{
+        commandInput.focus()
     })
 
 
@@ -74,9 +94,17 @@ module.exports = function cmd(){
             // If that array is empty (user din't write anything)....
             if (input.length  === 0){
                 //...add a line-break to the cmdElement (the window).
-                cmdElement.innerHTML += `<br>`
+                contentContainer.innerHTML += `<br>`
 
             }else{// else (if the user wrote something)....
+                
+
+                contentContainer.innerHTML += `
+                <div class="user-input">
+                    <span>$</span>  <span class="command-keyword">${input[0]}</span>
+                    <span>${_.join(input.slice(1),' ')}</span>
+                </div>
+                `
 
                 // if there is a command with a name that matches the user input...
                 if (allCommands.find((command)=> command.name === input[0])){
@@ -84,20 +112,24 @@ module.exports = function cmd(){
                     let command = _.find(allCommands, {name:input[0]})
                     command.function(input)
                 }else{
-                    cmdElement.innerHTML += `
-                    <span> <i class="fas fa-dollar-sign"></i>${_.join(input, ' ')}</span>
+                    commandOutputContainer.innerHTML += `
                     <p>Command doesn't exist yet!!</p>
                     `
                 }
             }
+
+             
+            
+            contentContainer.appendChild(commandOutputContainer)
             
             // print the path of the current directory
-            cmdElement.innerHTML += `<p>${fileSystem.printPath()}</p>`
+            contentContainer.innerHTML += `<p class="current-path">${fileSystem.printPath()}</p>`
         
             // reset the value of the input to none.
             commandInput.value = ''
+            commandOutputContainer.innerHTML =''
             // re-add that input to the window
-            cmdElement.appendChild(commandInputContainer)
+            contentContainer.appendChild(commandInputContainer)
             // set it on focus
             commandInput.focus()
 

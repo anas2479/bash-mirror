@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build-js": "webpack",
-    "build-css": "node-sass src/scss/main.scss dist/css/styles.css -w"
+    "build-css": "node-sass src/scss/cmd.scss dist/css/cmd.css -w"
   },
   "repository": {
     "type": "git",

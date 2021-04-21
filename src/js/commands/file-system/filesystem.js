@@ -1,10 +1,10 @@
 
 const _ = require('lodash')
-
-
+const { commandOutputContainer } = require('../../cmd.config')
 let allFolders = require('./folders')
 
-let cmd = document.getElementById('cmdEnvironment')
+
+
 
 // the max words a folder name or file name can have
 let maxNameSize = 100
@@ -65,7 +65,7 @@ function cd(command){
 
         }// Match was not found,
         else{
-            cmd.innerHTML += `<p><b>${folderName}</b> was no where to be found ¯\_(ツ)_/¯</p>`
+            commandOutputContainer.innerHTML += `<p><b>${folderName}</b> was no where to be found ¯\_(ツ)_/¯</p>`
         }
 
     }
@@ -99,10 +99,10 @@ function mkdir(command){
         }
     
         currentFolder.subfolders.push(newFolder)
-        cmd.innerHTML += `<p>Created <b>✨${folderName}✨</b> directory.</p>`
+        commandOutputContainer.innerHTML += `<p>Created <b>✨${folderName}✨</b> directory.</p>`
 
     }else{//user did not provide folder name
-        cmd.innerHTML += `
+        commandOutputContainer.innerHTML += `
             <p>Directory name was <b>not</b> provided. ☹</p>
             <p> Try <b> mkdir my directory</b></p>
             `
@@ -120,50 +120,55 @@ function ls(command){
         // has any subfolders or files
         if(currentFolder.subfolders.length > 0 || currentFolder.files.length > 0 ){
 
+            // create an icon that will be next to every folder on the list
+            let folderIcon = document.createElement('img')
+            folderIcon.src = 'imgs/folder.svg'
+
             // create a list `ul` element
             let folderList = document.createElement('ul')
+            folderList.setAttribute('class','content-list')
 
-            
 
-            currentFolder.subfolders.forEach((folder)=>{// for each folder inside the current folder
 
-                // create a list item `li`
-                let listItem = document.createElement('li')
 
-                // intert the folder name into the list item `li`
-                listItem.innerHTML = folder.name
+                let folderIcon = document.createElement('img')
+                folderIcon.src = 'imgs/folder.svg'
 
-                //append list item to the folderList
-                folderList.appendChild(listItem)
-
-                //append folderList into the cmd element.
-                cmd.appendChild(folderList)
-            })
 
 
             currentFolder.files.forEach((file)=>{// for each file inside the current folder
+
+
+                // create a list item `li`
+                let listItem = document.createElement('li')
+
+                let fileIcon = document.createElement('img')
+                fileIcon.src = 'imgs/file-text.svg'
+
                 
                 // create a list item `li`
                 let listItem = document.createElement('li')
+
                 // intert the file name into the list item `li`
-                listItem.innerHTML = file.name
+                listItem.appendChild(fileIcon)
+                listItem.innerHTML += file.name
 
                 //append list item to the folderList
                 folderList.appendChild(listItem)
 
-                //append folderList into the cmd element.
-                cmd.appendChild(folderList)
+                //append folderList into the commandOutputContainer element.
+                commandOutputContainer.appendChild(folderList)
             })
 
         }else{
-            cmd.innerHTML += `
+            commandOutputContainer.innerHTML += `
             <p>No content inside the current directory. ☹</p>
             <p> Try <b> mkdir my directory</b> to create one.</p>
             `
         }
 
     }else{// the user wrote more than the `ls` keyword
-        cmd.innerHTML += `
+        commandOutputContainer.innerHTML += `
         <span> <i class="fas fa-angle-right angle"></i>${_.join(command, ' ')}</span>
         <p>Command doesn't exist yet!!</p>
         `
@@ -191,11 +196,11 @@ function rm(command){
                 let removed = _.remove(currentFolder.files, (file)=>{
                     return file.name === file.name
                 })
-                cmd.innerHTML += `
+                commandOutputContainer.innerHTML += `
                     <p> successfully deleted <b>${name}</b> file. 🚽</p>
                 `
             }else{
-                cmd.innerHTML += `
+                commandOutputContainer.innerHTML += `
                 <p>no such <b>file</b> was found.</p>
                 <p>if you wanted to delete a folder instead, use <b>rmdir</b></p>
                 `
@@ -216,12 +221,12 @@ function rm(command){
                 let removed = _.remove(currentFolder.subfolders, (folder)=>{
                     return folder.name === folderMatch.name
                 })
-                cmd.innerHTML += `
+                commandOutputContainer.innerHTML += `
                     <p> successfully deleted <b>${name}</b> directory. 🚽</p>
                 `
                 console.log(removed)
             }else{// match was not found
-                cmd.innerHTML += `
+                commandOutputContainer.innerHTML += `
                     <p><b>${name}</b> directory does not exist. 😕</p>
                     <p>Try the command <b>dir</b> to see a list of existing directories and files in the current derectory.</b></p>
                     `
@@ -247,12 +252,12 @@ function touch(command){
         }
 
         currentFolder.files.push(newFile)
-        cmd.innerHTML += `
+        commandOutputContainer.innerHTML += `
         <p>Created <b>✨${fileName}✨</b> file.</p>
         `
 
     }else{// user only wrote `touch` keyword.
-        cmd.innerHTML += `
+        commandOutputContainer.innerHTML += `
         <p>No file name was provided 😟</p>
         `
     }
