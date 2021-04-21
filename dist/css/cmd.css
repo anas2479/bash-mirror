@@ -11,6 +11,21 @@
   background-color: #30323D;
   color: white;
   border-radius: 5px; }
+  .cmd_env::before {
+    content: '';
+    background: url("../../dist/imgs/chimppen.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: .01;
+    pointer-events: none; }
   .cmd_env p {
     margin: 0;
     padding: 0; }

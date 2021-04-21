@@ -15,12 +15,32 @@ $command-keyword: #FFBA93;
 
 
 .cmd_env{
+    //position: relative;
     max-width: 1000px;
     min-height: 350px;
     font-family: $primary_font;
     background-color: $cmd_bg;
     color: white;
     border-radius: 5px;
+
+
+    //bg img
+    &::before{
+        content: '';
+        background: url('../../dist/imgs/chimppen.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: right ;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        opacity: .01;
+        pointer-events: none
+    }
 
     p{
         margin: 0;
