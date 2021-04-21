@@ -8,5 +8,5 @@ module.exports = {
         path: path.resolve(__dirname, 'dist/js'),
         filename:'index-bundle.js'
     },
-    mode : 'development'
+    mode : 'production'
 }
