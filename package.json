@@ -1,5 +1,5 @@
 {
-  "name": "web-cl",
+  "name": "@anas2479/web-cl",
   "version": "1.0.0",
   "description": "A linux-like terminal pretender.",
   "main": "src/js/index.js",
