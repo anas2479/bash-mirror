@@ -1,22 +1,22 @@
 {
-  "name": "commandline-school",
+  "name": "web-cl",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A linux-like terminal pretender.",
+  "main": "src/js/index.js",
   "scripts": {
     "build-js": "webpack",
     "build-css": "node-sass src/scss/cmd.scss dist/css/cmd.css -w"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anas2479/command-line-school.git"
+    "url": "git+https://github.com/anas2479/web-cl.git"
   },
   "author": "Anas Mohamed",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/anas2479/command-line-school/issues"
+    "url": "https://github.com/anas2479/web-cl/issues"
   },
-  "homepage": "https://github.com/anas2479/command-line-school#readme",
+  "homepage": "https://github.com/anas2479/web-cl#readme",
   "devDependencies": {
     "webpack-cli": "^4.5.0"
   },
