@@ -129,34 +129,25 @@ function ls(command){
             folderList.setAttribute('class','content-list')
 
 
-            currentFolder.subfolders.forEach((folder)=>{// for each folder inside the current folder
 
-                // create a list item `li`
-                let listItem = document.createElement('li')
 
                 let folderIcon = document.createElement('img')
                 folderIcon.src = 'imgs/folder.svg'
 
 
-                // intert the folder name into the list item `li`
-                listItem.appendChild(folderIcon)
-                listItem.innerHTML += folder.name
-
-                //append list item to the folderList
-                folderList.appendChild(listItem)
-
-                //append folderList into the commandOutputContainer element.
-                commandOutputContainer.appendChild(folderList)
-            })
-
 
             currentFolder.files.forEach((file)=>{// for each file inside the current folder
+
 
                 // create a list item `li`
                 let listItem = document.createElement('li')
 
                 let fileIcon = document.createElement('img')
                 fileIcon.src = 'imgs/file-text.svg'
+
+                
+                // create a list item `li`
+                let listItem = document.createElement('li')
 
                 // intert the file name into the list item `li`
                 listItem.appendChild(fileIcon)

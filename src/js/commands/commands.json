@@ -3,7 +3,7 @@
 [
     {
         "name":"help",
-        "useCase":"Lists all the existing commands. Used when you need help.⛑"
+        "useCase":"Lists all the existing commands and their use. Used when you need help.⛑"
     },
 
     {
@@ -12,12 +12,32 @@
     },
 
     {
-        "name":"mkdir",
-        "useCase":"Creates a new directory.📁"
+        "name":"cd",
+        "useCase":"Used to change through directories. i.e cd test folder.⏯"
     },
 
     {
-        "name":"dir",
-        "useCase":"Lists all the existing derictories.📃"
+        "name":"mkdir",
+        "useCase":"Used to create a new directory.📁"
+    },
+
+    {
+        "name":"touch",
+        "useCase":"Used to create a new file.🖨"
+    },
+
+    {
+        "name":"rm",
+        "useCase":"Used to remove a file.🚽"
+    },
+
+    {
+        "name":"rmdir",
+        "useCase":"Used to remove a directory.🚽"
+    },
+
+    {
+        "name":"ls",
+        "useCase":"Lists all the existing contents in the current directory.📃"
     }
 ]
