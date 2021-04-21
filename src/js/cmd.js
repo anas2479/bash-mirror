@@ -1,5 +1,5 @@
 
-
+const version = require('../../package.json').version
 const _ = require('lodash');
 const cmdConfig = require('./cmd.config');
 
@@ -7,7 +7,7 @@ const allCommands = require('./commands.config')
 
 const fileSystem = require('./commands/file-system/filesystem')
 
-let version = 0.0
+
 
 let cmdElement = document.getElementById('cmdEnvironment');
 
