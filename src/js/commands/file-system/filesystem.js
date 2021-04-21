@@ -126,7 +126,7 @@ function ls(command){
 
             // create a list `ul` element
             let folderList = document.createElement('ul')
-
+            folderList.setAttribute('class','content-list')
 
 
             currentFolder.subfolders.forEach((folder)=>{// for each folder inside the current folder
