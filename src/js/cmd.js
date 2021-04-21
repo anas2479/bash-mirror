@@ -53,7 +53,7 @@ module.exports = function cmd(){
     let cmdInfo = {
         title : 'Web based Command Line',
         version : version,
-        repoLink:'https://github.com/anas2479/command-line-school'
+        repoLink:'https://github.com/anas2479/web-cl'
     }
 
 
@@ -66,8 +66,7 @@ module.exports = function cmd(){
 
         <div class="info"> 
             <p>${cmdInfo.title}</p>
-            <p>Version ${cmdInfo.version}</p>
-            <a href="${cmdInfo.repoLink}" style="color:white;"><i class="fab fa-github-alt"></i></a>
+            <a href="${cmdInfo.repoLink}" style="color:white;">Version ${cmdInfo.version}</a>
         </div>
     `
 
