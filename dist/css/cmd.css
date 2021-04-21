@@ -13,7 +13,7 @@
   border-radius: 5px; }
   .cmd_env::before {
     content: '';
-    background: url("../../dist/imgs/chimppen.svg");
+    background: url("imgs/chimppen.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right;
