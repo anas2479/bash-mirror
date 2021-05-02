@@ -1,6 +1,6 @@
 # About This Repo
 
-I wanted to better learn JS and the terminal, so I decided what better way to do that than by creating a fake terminal in vanilla js. It's not an actual CLI or terminal, but it pretends to be and act like one.
+I wanted to better learn JS and bash, so I decided what better way to do that than by creating a fake bash in vanilla js. It's not an actual CLI or bash, but it pretends to be and act like one.
 
 
 

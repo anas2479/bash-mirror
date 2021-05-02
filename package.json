@@ -1,5 +1,5 @@
 {
-  "name": "@anas2479/web-cl",
+  "name": "@anas2479/bash-mirror",
   "version": "1.0.0",
   "description": "A linux-like terminal pretender.",
   "main": "src/js/index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anas2479/web-cl.git"
+    "url": "git+https://github.com/anas2479/bash-mirror.git"
   },
   "author": "Anas Mohamed",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/anas2479/web-cl/issues"
+    "url": "https://github.com/anas2479/bash-mirror/issues"
   },
-  "homepage": "https://github.com/anas2479/web-cl#readme",
+  "homepage": "https://github.com/anas2479/bash-mirror#readme",
   "devDependencies": {
     "webpack-cli": "^4.5.0"
   },
