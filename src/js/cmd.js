@@ -91,8 +91,7 @@ module.exports = function cmd(){
             //...convert whatever thay wrote into an array of words.
             let input = _.words(commandInput.value, /[^ ]+/g)
 
-            // make the first letter of the first word lower case
-            input[0] = _.lowerFirst(input[0])
+
 
             // If that array is empty (user din't write anything)....
             if (input.length  === 0){
@@ -101,7 +100,9 @@ module.exports = function cmd(){
 
             }else{// else (if the user wrote something)....
                 
-
+                // make the first letter of the first word lower case
+                input[0] = _.lowerFirst(input[0])
+                
                 contentContainer.innerHTML += `
                 <div class="user-input">
                     <span>$</span>  <span class="command-keyword">${input[0]}</span>
