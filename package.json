@@ -1,6 +1,6 @@
 {
   "name": "@anas2479/bash-mirror",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A linux-like terminal pretender.",
   "main": "src/js/index.js",
   "scripts": {
