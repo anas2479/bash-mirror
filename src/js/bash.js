@@ -48,7 +48,7 @@ let commandOutputContainer = bashConfig.commandOutputContainer
 
 
 
-module.exports = function cmd(){
+module.exports = function bash(){
     
     let cmdInfo = {
         title : 'Web based Command Line',
