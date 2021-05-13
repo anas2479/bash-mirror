@@ -1,3 +1,6 @@
+
+// Elements other modules need to have access to.
+
 let commandOutputContainer = document.createElement('div')
 commandOutputContainer.setAttribute('class','command-output-container')
 
