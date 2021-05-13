@@ -10,6 +10,7 @@ $side_margins : 15px;
 
 .bash-mirror{
     position: relative;
+    min-height: 100px;
     max-height: 400px;
     font-family: $primary_font;
     background-color: $bash_bg;

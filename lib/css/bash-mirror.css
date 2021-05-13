@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 .bash-mirror {
   position: relative;
+  min-height: 100px;
   max-height: 400px;
   font-family: "Roboto", sans-serif;
   background-color: #30323D;
