@@ -1,5 +1,5 @@
 
-const { commandOutputContainer } = require('../cmd.config')
+const { commandOutputContainer } = require('../bash.config')
 const commands = require('./commands.json')
 
 

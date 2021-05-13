@@ -1,6 +1,6 @@
 
 const _ = require('lodash')
-const { commandOutputContainer } = require('../../cmd.config')
+const { commandOutputContainer } = require('../../bash.config')
 let allFolders = require('./folders')
 
 

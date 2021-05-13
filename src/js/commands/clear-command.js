@@ -1,4 +1,4 @@
-const { contentContainer } = require("../cmd.config")
+const { contentContainer } = require("../bash.config")
 
 
 

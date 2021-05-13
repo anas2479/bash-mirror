@@ -1,7 +1,7 @@
 
 const version = require('../../package.json').version
 const _ = require('lodash');
-const cmdConfig = require('./cmd.config');
+const cmdConfig = require('./bash.config');
 
 const allCommands = require('./commands.config')
 
