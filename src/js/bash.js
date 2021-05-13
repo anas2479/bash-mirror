@@ -7,14 +7,14 @@ const fileSystem = require('./commands/file-system/filesystem')
 
 
 
-let bashElement = document.getElementById('bash_mirror');
+let bashElement
 
 
 let header = document.createElement('div')
 header.setAttribute('class', 'bash-mirror-header')
 
 
-bashElement.appendChild(header)
+
 
 let contentContainer = bashConfig.contentContainer
 
@@ -40,8 +40,12 @@ let commandOutputContainer = bashConfig.commandOutputContainer
 
 
 
-module.exports = function bash(){
+module.exports = function bash(target){
     
+    bashElement = target
+    
+
+    bashElement.appendChild(header)
 
     
     commandInputContainer.appendChild(commandLineSign)
