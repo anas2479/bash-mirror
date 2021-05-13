@@ -4,7 +4,7 @@
 $primary_font: 'Roboto', sans-serif;
 $bash_bg : #30323D;
 $command-keyword: #FFBA93;
-
+$side_margins : 15px;
 
 
 
@@ -18,23 +18,6 @@ $command-keyword: #FFBA93;
     border-radius: 5px;
 
 
-    //bg img
-    &::before{
-        content: '';
-        background: url('/imgs/chimppen.svg');
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: right ;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        opacity: .01;
-        pointer-events: none
-    }
 
     p{
         margin: 0;
@@ -42,36 +25,18 @@ $command-keyword: #FFBA93;
     }
 
     &-header{
+        height: 25px;
         background-color: rgba($bash_bg,0.9);
-        padding: 5px 0;
-        display: flex;
-        justify-content: center;
         border-radius: 5px 5px 0 0;
         border-bottom: .2px solid rgba(0, 0,0,.4);
 
-        span{
-            font-size: 12px;
-            font-style: italic;
-            color: #858585;
-        }
+        
     }
 
-    .info{
-        $info-ling: rgba(white , .6);
-        color:$info-ling;
-        font-style: italic;
-        font-size: 13px;
-        margin-bottom: 20px;
-
-        a{
-            color: $info-ling;
-            text-decoration:underline rgba(white,.5);
-        }
-    }
 
     &-content-wrap{
         min-height: 300px;
-        padding: 15px 15px;
+        padding: $side_margins;
 
 
         .current-path{

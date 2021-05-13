@@ -6,46 +6,17 @@
   background-color: #30323D;
   color: white;
   border-radius: 5px; }
-  .bash-mirror::before {
-    content: '';
-    background: url("/imgs/chimppen.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: right;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    opacity: .01;
-    pointer-events: none; }
   .bash-mirror p {
     margin: 0;
     padding: 0; }
   .bash-mirror-header {
+    height: 25px;
     background-color: rgba(48, 50, 61, 0.9);
-    padding: 5px 0;
-    display: flex;
-    justify-content: center;
     border-radius: 5px 5px 0 0;
     border-bottom: 0.2px solid rgba(0, 0, 0, 0.4); }
-    .bash-mirror-header span {
-      font-size: 12px;
-      font-style: italic;
-      color: #858585; }
-  .bash-mirror .info {
-    color: rgba(255, 255, 255, 0.6);
-    font-style: italic;
-    font-size: 13px;
-    margin-bottom: 20px; }
-    .bash-mirror .info a {
-      color: rgba(255, 255, 255, 0.6);
-      text-decoration: underline rgba(255, 255, 255, 0.5); }
   .bash-mirror-content-wrap {
     min-height: 300px;
-    padding: 15px 15px; }
+    padding: 15px; }
     .bash-mirror-content-wrap .current-path {
       opacity: .8; }
       .bash-mirror-content-wrap .current-path::after {
