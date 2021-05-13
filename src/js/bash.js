@@ -1,7 +1,7 @@
 
 const version = require('../../package.json').version
 const _ = require('lodash');
-const cmdConfig = require('./bash.config');
+const bashConfig = require('./bash.config');
 
 const allCommands = require('./commands.config')
 
@@ -9,7 +9,7 @@ const fileSystem = require('./commands/file-system/filesystem')
 
 
 
-let cmdElement = document.getElementById('cmdEnvironment');
+let bashElement = document.getElementById('cmdEnvironment');
 
 
 let header = document.createElement('div')
@@ -22,9 +22,9 @@ header.appendChild(logo)
 header.innerHTML += `
 <span>Web Command-Line</span>`
 
-cmdElement.appendChild(header)
+bashElement.appendChild(header)
 
-let contentContainer = cmdConfig.contentContainer
+let contentContainer = bashConfig.contentContainer
 
 
 // Create the commandLineSign element 
@@ -44,7 +44,7 @@ commandInput.setAttribute('autofocus', true)
 let commandInputContainer = document.createElement('span')
 commandInputContainer.setAttribute('class', 'command-input-container')
 
-let commandOutputContainer = cmdConfig.commandOutputContainer
+let commandOutputContainer = bashConfig.commandOutputContainer
 
 
 
@@ -70,7 +70,7 @@ module.exports = function cmd(){
         </div>
     `
 
-    cmdElement.appendChild(contentContainer)
+    bashElement.appendChild(contentContainer)
 
     // Append the inputContainer to the cmd
     contentContainer.appendChild(commandInputContainer)
@@ -95,7 +95,7 @@ module.exports = function cmd(){
 
             // If that array is empty (user din't write anything)....
             if (input.length  === 0){
-                //...add a line-break to the cmdElement (the window).
+                //...add a line-break to the bashElement (the window).
                 contentContainer.innerHTML += `<br>`
 
             }else{// else (if the user wrote something)....
