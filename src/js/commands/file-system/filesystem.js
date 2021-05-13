@@ -1,6 +1,7 @@
 
 const _ = require('lodash')
 const { commandOutputContainer } = require('../../bash.config')
+const icons = require('../../icons')
 let allFolders = require('./folders')
 
 
@@ -120,9 +121,6 @@ function ls(command){
         // has any subfolders or files
         if(currentFolder.subfolders.length > 0 || currentFolder.files.length > 0 ){
 
-            // create an icon that will be next to every folder on the list
-            let folderIcon = document.createElement('img')
-            folderIcon.src = 'imgs/folder.svg'
 
             // create a list `ul` element
             let folderList = document.createElement('ul')
@@ -134,12 +132,11 @@ function ls(command){
                 // create a list item `li`
                 let listItem = document.createElement('li')
 
-                let folderIcon = document.createElement('img')
-                folderIcon.src = 'imgs/folder.svg'
-
+                let folderIcon = _.find(icons, {name : 'folder-icon'})
+                console.log(folderIcon)
 
                 // intert the folder name into the list item `li`
-                listItem.appendChild(folderIcon)
+                listItem.innerHTML = `${folderIcon.svgPath}`
                 listItem.innerHTML += folder.name
 
                 //append list item to the folderList
@@ -155,11 +152,10 @@ function ls(command){
                 // create a list item `li`
                 let listItem = document.createElement('li')
 
-                let fileIcon = document.createElement('img')
-                fileIcon.src = 'imgs/file-text.svg'
+                let fileIcon = _.find(icons, {name :'file-icon'})
 
                 // intert the file name into the list item `li`
-                listItem.appendChild(fileIcon)
+                listItem.innerHTML = `${fileIcon.svgPath}`
                 listItem.innerHTML += file.name
 
                 //append list item to the folderList
