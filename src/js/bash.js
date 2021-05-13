@@ -7,11 +7,11 @@ const fileSystem = require('./commands/file-system/filesystem')
 
 
 
-let bashElement = document.getElementById('cmdEnvironment');
+let bashElement = document.getElementById('bash_mirror');
 
 
 let header = document.createElement('div')
-header.setAttribute('class', 'cmd_env-header')
+header.setAttribute('class', 'bash-mirror-header')
 
 
 bashElement.appendChild(header)

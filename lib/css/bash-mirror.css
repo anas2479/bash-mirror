@@ -1,17 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-/*!
-*
-* Command line window component styles
-*
-*/
-.cmd_env {
+.bash-mirror {
   max-width: 1000px;
   min-height: 350px;
   font-family: "Roboto", sans-serif;
   background-color: #30323D;
   color: white;
   border-radius: 5px; }
-  .cmd_env::before {
+  .bash-mirror::before {
     content: '';
     background: url("/imgs/chimppen.svg");
     background-repeat: no-repeat;
@@ -26,63 +21,63 @@
     bottom: 0;
     opacity: .01;
     pointer-events: none; }
-  .cmd_env p {
+  .bash-mirror p {
     margin: 0;
     padding: 0; }
-  .cmd_env-header {
+  .bash-mirror-header {
     background-color: rgba(48, 50, 61, 0.9);
     padding: 5px 0;
     display: flex;
     justify-content: center;
     border-radius: 5px 5px 0 0;
     border-bottom: 0.2px solid rgba(0, 0, 0, 0.4); }
-    .cmd_env-header span {
+    .bash-mirror-header span {
       font-size: 12px;
       font-style: italic;
       color: #858585; }
-  .cmd_env .info {
+  .bash-mirror .info {
     color: rgba(255, 255, 255, 0.6);
     font-style: italic;
     font-size: 13px;
     margin-bottom: 20px; }
-    .cmd_env .info a {
+    .bash-mirror .info a {
       color: rgba(255, 255, 255, 0.6);
       text-decoration: underline rgba(255, 255, 255, 0.5); }
-  .cmd_env-content-wrap {
+  .bash-mirror-content-wrap {
     min-height: 300px;
     padding: 15px 15px; }
-    .cmd_env-content-wrap .current-path {
+    .bash-mirror-content-wrap .current-path {
       opacity: .8; }
-      .cmd_env-content-wrap .current-path::after {
+      .bash-mirror-content-wrap .current-path::after {
         content: '/'; }
-    .cmd_env-content-wrap .command-input-container {
+    .bash-mirror-content-wrap .command-input-container {
       width: 100%;
       display: flex;
       align-items: center; }
-      .cmd_env-content-wrap .command-input-container:not(:last-child) {
+      .bash-mirror-content-wrap .command-input-container:not(:last-child) {
         display: none; }
-      .cmd_env-content-wrap .command-input-container .command-line-sign {
+      .bash-mirror-content-wrap .command-input-container .command-line-sign {
         padding: 0 5px; }
-      .cmd_env-content-wrap .command-input-container input {
+      .bash-mirror-content-wrap .command-input-container input {
         width: 98%;
         height: auto;
         background-color: #30323D;
         color: white;
         outline: none;
         border: none; }
-    .cmd_env-content-wrap .user-input .command-keyword {
+    .bash-mirror-content-wrap .user-input .command-keyword {
       color: #FFBA93; }
-    .cmd_env-content-wrap .command-output-container {
+    .bash-mirror-content-wrap .command-output-container {
       margin-bottom: 15px; }
-      .cmd_env-content-wrap .command-output-container:nth-last-child() {
+      .bash-mirror-content-wrap .command-output-container:nth-last-child() {
         color: rgba(0, 0, 0, 0.4); }
-    .cmd_env-content-wrap .content-list {
+    .bash-mirror-content-wrap .content-list {
       list-style: none; }
-      .cmd_env-content-wrap .content-list li {
+      .bash-mirror-content-wrap .content-list li {
         display: flex;
         align-items: flex-start;
         margin-bottom: 5px; }
-        .cmd_env-content-wrap .content-list li img {
+        .bash-mirror-content-wrap .content-list li img {
           max-width: 20px;
           margin-right: 5px;
           opacity: .7; }

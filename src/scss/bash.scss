@@ -2,24 +2,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 $primary_font: 'Roboto', sans-serif;
-
-$cmd_bg : #30323D;
-
+$bash_bg : #30323D;
 $command-keyword: #FFBA93;
-/*!
-*
-* Command line window component styles
-*
-*/
 
 
 
-.cmd_env{
+
+.bash-mirror{
     //position: relative;
     max-width: 1000px;
     min-height: 350px;
     font-family: $primary_font;
-    background-color: $cmd_bg;
+    background-color: $bash_bg;
     color: white;
     border-radius: 5px;
 
@@ -48,7 +42,7 @@ $command-keyword: #FFBA93;
     }
 
     &-header{
-        background-color: rgba($cmd_bg,0.9);
+        background-color: rgba($bash_bg,0.9);
         padding: 5px 0;
         display: flex;
         justify-content: center;
@@ -105,7 +99,7 @@ $command-keyword: #FFBA93;
             input{
                 width: 98%;
                 height: auto;
-                background-color: $cmd_bg;
+                background-color: $bash_bg;
                 color: white;
                 outline: none;
                 border: none;
