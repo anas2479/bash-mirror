@@ -54,3 +54,13 @@
       margin-bottom: 15px; }
       .bash-mirror-content-wrap .command-output-container:nth-last-child() {
         color: rgba(0, 0, 0, 0.4); }
+    .bash-mirror-content-wrap ul, .bash-mirror-content-wrap ol {
+      list-style: none; }
+      .bash-mirror-content-wrap ul li, .bash-mirror-content-wrap ol li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 5px; }
+        .bash-mirror-content-wrap ul li img, .bash-mirror-content-wrap ol li img {
+          max-width: 20px;
+          margin-right: 5px;
+          opacity: .7; }

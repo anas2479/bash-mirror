@@ -110,6 +110,20 @@ $side_margins : 15px;
             }
         }
 
+        ul, ol{
+            list-style: none;
+            
+            li{
+                display: flex;
+                align-items: flex-start;
+                margin-bottom: 5px;
+                img{
+                    max-width: 20px;
+                    margin-right: 5px;
+                    opacity: .7;
+                }
+            }
+        }
 
     }
 
