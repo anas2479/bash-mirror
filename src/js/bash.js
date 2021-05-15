@@ -19,10 +19,7 @@ header.setAttribute('class', 'bash-mirror-header')
 let contentContainer = bashConfig.contentContainer
 
 
-// Create the commandLineSign element 
-let commandLineSign = document.createElement('i')
-commandLineSign.innerHTML = '$'
-commandLineSign.setAttribute('class', 'command-line-sign')
+
 
 
 // Create input for the user
@@ -38,16 +35,25 @@ commandInputContainer.setAttribute('class', 'command-input-container')
 let commandOutputContainer = bashConfig.commandOutputContainer
 
 
-
-
-module.exports = function bash(target){
+module.exports = function bash(target, options){
     
     bashElement = target
     
 
     bashElement.appendChild(header)
 
+
+    // Create the commandLineSign element 
+    let commandLineSign = document.createElement('i')
+    commandLineSign.setAttribute('class', 'command-line-sign')
+
+    if (options === undefined){
+        commandLineSign.innerHTML = `$`
+    }else{
+        commandLineSign.innerHTML = options.sign
+    }
     
+
     commandInputContainer.appendChild(commandLineSign)
     commandInputContainer.appendChild(commandInput)
     
@@ -86,7 +92,7 @@ module.exports = function bash(target){
                 
                 contentContainer.innerHTML += `
                 <div class="user-input">
-                    <span>$</span>  <span class="command-keyword">${input[0]}</span>
+                    <span>${options.sign}</span>  <span class="command-keyword">${input[0]}</span>
                     <span>${_.join(input.slice(1),' ')}</span>
                 </div>
                 `
