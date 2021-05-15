@@ -11,16 +11,21 @@ let allFolders = require('./folders')
 // the max words a folder name or file name can have
 let maxNameSize = 100
 
-// Set the current folder to the Root folder.
+/**
+ * The current folder in the allFolders array
+ */
 let currentFolder = allFolders[0]
 
-// history of folders you changed into (cd test folder)
-// We'll use this array to constract a Breadcrumb
+
 let history = []
 
 // index will be used to track history.
 let index = -1
 
+/**
+ * The function used to change through directories.
+ * @param {Array} command The user input split into words.
+ */
 
 function cd(command){
 
@@ -77,7 +82,10 @@ function cd(command){
     
 }
 
-
+/**
+ * 
+ * @returns {string} The current location in the file system.
+ */
 function printPath(){
     let path = []
 
@@ -89,6 +97,12 @@ function printPath(){
     return _.join(path,'')
 }
 
+
+
+/**
+ * Creates a new folder in the current directory.
+ * @param {Array} command The user input split into words.
+ */
 function mkdir(command){
 
     if(command.length > 1){ // user provided folder name --> command = ['mkdir', 'folder name',]
@@ -110,7 +124,10 @@ function mkdir(command){
 }
 
 
-
+/**
+ * Returns all the contents inside the current directory in HTML list.
+ * @param {Array} command The user input split into wards
+ */
 function ls(command){
 
     if (command.length === 1){// make sure the user only wrote `ls` keyword
@@ -173,6 +190,11 @@ function ls(command){
    
 }
 
+
+/**
+ * Removes a file from the current directory.
+ * @param {Array} command The user input split into words
+ */
 function rm(command){
 
     // check if the user wrote more after the `rmdir`/`rm` keywords
@@ -229,7 +251,10 @@ function rm(command){
     }
 }
 
-
+/**
+ * Creates a new file in the current directory.
+ * @param {Array} command The user input split into words
+ */
 function touch(command){
 
     if(command.length > 1){//check user provided a file name
