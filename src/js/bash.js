@@ -34,6 +34,12 @@ commandInputContainer.setAttribute('class', 'command-input-container')
 
 let commandOutputContainer = bashConfig.commandOutputContainer
 
+/**
+ * The main function that brings together everything.
+ * @function
+ * @param {Element} target The HTML element in which you want turn into your bash app.
+ * @param {{sign:String}} options Options to further customize your bash. Things such as the command-line sign.
+ */
 
 module.exports = function bash(target, options){
     
