@@ -1,5 +1,6 @@
 
 const { commandOutputContainer } = require('../bash.config')
+const { error } = require('../errors')
 const commands = require('./commands.json')
 
 
@@ -7,13 +8,9 @@ const commands = require('./commands.json')
 module.exports = function help(userInput){
     
     
-    
-    
     if(userInput.length > 1){// if the user wrote more than `help`
-        commandOutputContainer.innerHTML += `
-        <span>${_.join(userInput, ' ')}</span>
-        <p>Command doesn't exist yet!!</p>
-        `
+        error("That command does not exist.☹")
+
     }  else{// if the user only wrote `help`
         commands.forEach((command)=>{
             commandOutputContainer.innerHTML += `

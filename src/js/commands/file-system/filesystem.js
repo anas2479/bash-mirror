@@ -1,6 +1,7 @@
 
 const _ = require('lodash')
 const { commandOutputContainer } = require('../../bash.config')
+const { error } = require('../../errors')
 const icons = require('../../icons')
 let allFolders = require('./folders')
 
@@ -66,7 +67,7 @@ function cd(command){
 
         }// Match was not found,
         else{
-            commandOutputContainer.innerHTML += `<p><b>${folderName}</b> was no where to be found ¯\_(ツ)_/¯</p>`
+            error(`<b>${folderName}</b> was no where to be found 😟 `)
         }
 
     }
@@ -103,10 +104,7 @@ function mkdir(command){
         commandOutputContainer.innerHTML += `<p>Created <b>✨${folderName}✨</b> directory.</p>`
 
     }else{//user did not provide folder name
-        commandOutputContainer.innerHTML += `
-            <p>Directory name was <b>not</b> provided. ☹</p>
-            <p> Try <b> mkdir my directory</b></p>
-            `
+        error(`Directory name was <b>not</b> provided. ☹`)
     }
 
 }
@@ -166,17 +164,11 @@ function ls(command){
             })
 
         }else{
-            commandOutputContainer.innerHTML += `
-            <p>No content inside the current directory. ☹</p>
-            <p> Try <b> mkdir my directory</b> to create one.</p>
-            `
+            error(`No content inside the current directory. ☹`)
         }
 
     }else{// the user wrote more than the `ls` keyword
-        commandOutputContainer.innerHTML += `
-        <span>${_.join(command, ' ')}</span>
-        <p>Command doesn't exist yet!!</p>
-        `
+        error(`That command does not exist.☹`)
     }
    
 }
@@ -205,10 +197,7 @@ function rm(command){
                     <p> successfully deleted <b>${name}</b> file. 🚽</p>
                 `
             }else{
-                commandOutputContainer.innerHTML += `
-                <p>no such <b>file</b> was found.</p>
-                <p>if you wanted to delete a folder instead, use <b>rmdir</b></p>
-                `
+                error(`No such <b>file</b> was found. To delete a folder instead, use <b>rmdir</b>`)
             }
 
 
@@ -231,10 +220,7 @@ function rm(command){
                 `
                 console.log(removed)
             }else{// match was not found
-                commandOutputContainer.innerHTML += `
-                    <p><b>${name}</b> directory does not exist. 😕</p>
-                    <p>Try the command <b>ls</b> to see a list of existing directories and files in the current derectory.</b></p>
-                    `
+                error(`<b>${name}</b> directory does not exist. 😕`)
             }
 
 
@@ -262,9 +248,7 @@ function touch(command){
         `
 
     }else{// user only wrote `touch` keyword.
-        commandOutputContainer.innerHTML += `
-        <p>No file name was provided 😟</p>
-        `
+        error(`No <b>file name</b> was provided 😟.`)
     }
     
 }
