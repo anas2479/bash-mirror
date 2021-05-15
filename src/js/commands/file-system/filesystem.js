@@ -174,7 +174,7 @@ function ls(command){
 
     }else{// the user wrote more than the `ls` keyword
         commandOutputContainer.innerHTML += `
-        <span> <i class="fas fa-angle-right angle"></i>${_.join(command, ' ')}</span>
+        <span>${_.join(command, ' ')}</span>
         <p>Command doesn't exist yet!!</p>
         `
     }
@@ -233,7 +233,7 @@ function rm(command){
             }else{// match was not found
                 commandOutputContainer.innerHTML += `
                     <p><b>${name}</b> directory does not exist. 😕</p>
-                    <p>Try the command <b>dir</b> to see a list of existing directories and files in the current derectory.</b></p>
+                    <p>Try the command <b>ls</b> to see a list of existing directories and files in the current derectory.</b></p>
                     `
             }
 
