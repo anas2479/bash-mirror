@@ -8,7 +8,7 @@ const commands = require('./commands.json')
 module.exports = function help(userInput){
     
     
-    if(userInput.length > 1){// if the user wrote more than `help`
+    if(userInput.length >= 1){// if the user wrote more than `help`
         error("That command does not exist.☹")
 
     }  else{// if the user only wrote `help`
