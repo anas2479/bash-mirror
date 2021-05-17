@@ -112,7 +112,7 @@ module.exports = function bash(target, options){
                     error(`Command doesn't exist yet!!`)
                 }
             }
-
+            console.log(input.slice(1));
              
             
             contentContainer.appendChild(commandOutputContainer)
