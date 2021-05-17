@@ -21,7 +21,11 @@ module.exports = [
                 files:[]
             }
         ],
-        files:[]
+        files:[
+            {
+                name:'bash-mirror.😜'
+            }
+        ]
     }
 ]
 
