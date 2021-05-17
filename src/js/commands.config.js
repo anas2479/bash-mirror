@@ -36,7 +36,7 @@ module.exports = [
 
     {
         name:"rmdir",
-        function:fileSystem.rm,
+        function:fileSystem.rmdir,
         description:'Used to remove a directory. 🗑'
     },
 
