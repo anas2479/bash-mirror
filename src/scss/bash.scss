@@ -3,7 +3,7 @@
 
 $primary_font: 'Roboto', sans-serif;
 $bash_bg : #30323D;
-$command-keyword: #FFBA93;
+$command-keyword: #60b8ff;
 $side_margins : 15px;
 
 
@@ -124,6 +124,10 @@ $side_margins : 15px;
                     opacity: .7;
                 }
             }
+        }
+
+        .bash-mirror-error{
+            color:#ff916f;
         }
 
     }

@@ -50,7 +50,7 @@
         outline: none;
         border: none; }
     .bash-mirror-content-wrap .user-input .command-keyword {
-      color: #FFBA93; }
+      color: #60b8ff; }
     .bash-mirror-content-wrap .command-output-container {
       margin-bottom: 15px; }
       .bash-mirror-content-wrap .command-output-container:nth-last-child() {
@@ -65,3 +65,5 @@
           max-width: 20px;
           margin-right: 5px;
           opacity: .7; }
+    .bash-mirror-content-wrap .bash-mirror-error {
+      color: #ff916f; }
