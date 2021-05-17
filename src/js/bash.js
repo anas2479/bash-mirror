@@ -2,6 +2,7 @@
 const version = require('../../package.json').version
 const _ = require('lodash');
 const bashConfig = require('./bash.config');
+const {error} = require('./errors')
 const allCommands = require('./commands.config')
 const fileSystem = require('./commands/file-system/filesystem')
 
@@ -83,8 +84,8 @@ module.exports = function bash(target, options){
 
             
             let input = _.words(commandInput.value, /[^ ]+/g)
-
-
+            
+            
 
             
             if (input.length  === 0){
@@ -103,15 +104,12 @@ module.exports = function bash(target, options){
                 </div>
                 `
 
-                
-                if (allCommands.find((command)=> command.name === input[0])){
-                    
-                    let command = _.find(allCommands, {name:input[0]})
-                    command.function(input)
+                let findCommand = allCommands.find((command)=> command.name === input[0])
+                if (findCommand != undefined){
+            
+                    findCommand.function(input.slice(1))
                 }else{
-                    commandOutputContainer.innerHTML += `
-                    <p>Command doesn't exist yet!!</p>
-                    `
+                    error(`Command doesn't exist yet!!`)
                 }
             }
 
