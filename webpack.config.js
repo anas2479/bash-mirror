@@ -8,7 +8,7 @@ module.exports = {
         path: path.resolve(__dirname, 'lib/js'),
         filename:'bash-mirror.js',
         library: {
-            name: 'Bash',
+            name: 'BashMirror',
             type: 'umd',
           }
     },

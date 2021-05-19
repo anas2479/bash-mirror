@@ -22,19 +22,6 @@
 <script src="../lib/js/bash-mirror.js"></script>
 <script>
     let element = document.getElementById('bash_mirror')
-    let myBash = new Bash.bash(element, {
-        sign:'👉'
-    })
-    
-    function hello(someone){
-        Bash.outPut(`Hello ${someone}`)
-    }
-    Bash.addCommand(
-        {
-            name:'hello',
-            function:hello,
-            description:'Hello world function'
-        }
-    )
-    
+    let myBash = new BashMirror.Bash()
+    console.log(myBash)
 </script>
