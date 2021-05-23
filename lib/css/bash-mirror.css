@@ -38,8 +38,6 @@
       width: 100%;
       display: flex;
       align-items: center; }
-      .bash-mirror-content-wrap .command-input-container:not(:last-child) {
-        display: none; }
       .bash-mirror-content-wrap .command-input-container .command-line-sign {
         padding: 0 5px; }
       .bash-mirror-content-wrap .command-input-container input {

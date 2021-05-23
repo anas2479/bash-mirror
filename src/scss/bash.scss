@@ -74,10 +74,6 @@ $side_margins : 15px;
             display: flex;
             align-items: center;
 
-            &:not(:last-child){
-                display: none;
-            }
-
             .command-line-sign{
                 padding: 0 5px;
             }
