@@ -4,6 +4,7 @@ const CommandLine = require("./command-line");
 const OutPut = require("./command-output");
 const allCommands = require("./commands.config");
 const { error } = require("./errors");
+const { printPath } = require("./Filesystem");
 const NewCommand = require("./new-command");
 const RunCommands = require("./run-commands");
 
@@ -22,7 +23,7 @@ module.exports = class Bash {
      */
     constructor(target, options) {
 
-
+        this.name = 'Bash'
         /* Check if the developer provided a valid target
         --------------------*/
         if (target instanceof Element) {
@@ -45,6 +46,9 @@ module.exports = class Bash {
 
         this.contentWrap = contentWrap;
 
+        let FSLocation = `<p class="current-path">${printPath()}/</p>`
+        this.contentWrap.innerHTML = `${FSLocation}`
+
         this.commandLine = new CommandLine(this.commandLineSign);
 
         this.contentWrap.appendChild(this.commandLine.element);
@@ -58,18 +62,17 @@ module.exports = class Bash {
 
             if (e.key === "Enter") {
 
-                let userInput = _.words(this.commandLine.input.value);
+                let userInput = _.words(this.commandLine.input.value,/[^ ]+/g);
                 this.commandLine.element.remove();
-
 
                 /*If the user wrote nothing
                 ---------------------*/
                 if (userInput.length === 0) {
 
-                    new OutPut(`<p style="margin-bottom:15px;">${options.sign}</p>`);
+                    new OutPut(``);
 
                 } else {
-
+                    console.log(this.name +' input:', userInput);
                     new OutPut(`
                     <div class="user-input">
                         <span>${options.sign
@@ -98,6 +101,7 @@ module.exports = class Bash {
                         error(`Unknown command ☹`);
                     }
                 }
+                new OutPut(`<p class="current-path">${printPath()}/</p>`)
                 this.commandLine.input.value = "";
                 this.contentWrap.appendChild(this.commandLine.element);
                 this.commandLine.input.focus();
