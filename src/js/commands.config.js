@@ -1,7 +1,8 @@
 // import all the commands
-//const fileSystem = require('./commands/file-system/filesystem')
+
 const help = require('./commands/help');
 const clear_command = require('./commands/clear');
+const fileSystem = require('./Filesystem');
 
 
 
@@ -22,42 +23,48 @@ module.exports = [
          description:`Clears everything on the screen. Used when you want to start fresh.✨`
      },
 
-    // {
-    //     name:'cd',
-    //     function:fileSystem.cd,
-    //     description:'Used to move though directories. ⏯'
+    {
+        name:'cd',
+        function:fileSystem.cd,
+        args:[1],
+        description:'Used to move though directories. ⏯'
 
-    // },
+    },
 
-    // {
-    //     name:"mkdir",
-    //     function:fileSystem.mkdir,
-    //     description:'Creates a new directory.📁'
-    // },
+    {
+        name:"mkdir",
+        args:[1],
+        function:fileSystem.mkdir,
+        description:'Creates a new directory.📁'
+    },
 
 
-    // {
-    //     name:"rmdir",
-    //     function:fileSystem.rmdir,
-    //     description:'Used to remove a directory. 🗑'
-    // },
+    {
+        name:"rmdir",
+        args:[1],
+        function:fileSystem.rmdir,
+        description:'Used to remove a directory. 🗑'
+    },
 
-    // {
-    //     name:"rm",
-    //     function:fileSystem.rm,
-    //     description:'Used to remove a file. 🗑'
-    // },
+    {
+        name:"rm",
+        args:[1],
+        function:fileSystem.rm,
+        description:'Used to remove a file. 🗑'
+    },
 
-    // {
-    //     name:"ls",
-    //     function:fileSystem.ls,
-    //     description:'Lists all the content in the current directory.📃'
-    // },
+    {
+        name:"ls",
+        args:[0],
+        function:fileSystem.ls,
+        description:'Lists all the content in the current directory.📃'
+    },
 
-    // {
-    //     name:"touch",
-    //     function:fileSystem.touch,
-    //     description:'Creates a new file.🖨'
-    // }
+    {
+        name:"touch",
+        args:[1],
+        function:fileSystem.touch,
+        description:'Creates a new file.🖨'
+    }
     
 ]
