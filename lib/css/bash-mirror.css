@@ -32,8 +32,6 @@
     padding: 15px; }
     .bash-mirror-content-wrap .current-path {
       opacity: .8; }
-      .bash-mirror-content-wrap .current-path::after {
-        content: '/'; }
     .bash-mirror-content-wrap .command-input-container {
       width: 100%;
       display: flex;

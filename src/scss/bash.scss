@@ -63,9 +63,7 @@ $side_margins : 15px;
         .current-path{
             opacity: .8;
 
-            &::after{
-                content: '/';
-            }
+            
         }
 
         // command input
