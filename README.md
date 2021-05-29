@@ -1,11 +1,13 @@
-# About This Repo
+Bash-Mirror is a JS library for creating Bash or Shell-like experiences on your web apps. It even emulates a filesystem to be more realistic.
 
-I wanted to better learn JS and bash, so I decided what better way to do that than by creating a fake bash in vanilla js. It's not an actual CLI or bash, but it pretends to be and act like one.
+----
 
+## Documentation
+You can find developer docs at [Notion](https://www.notion.so/Bash-Mirror-3c01c079baef45a6be1e86132e853a0c)
 
+-----
 
-
-## Available Commands 
+## Default Commands 
 
 `help`  : Lists all the commands that currently exist.
 
@@ -29,3 +31,6 @@ I wanted to better learn JS and bash, so I decided what better way to do that th
 
 
 `ls`    : Lists out all the content in the current directory.
+
+---------
+Please note that this project is released with a [Contributor Code of Conduct](CODE-OF-CONDUCT.md). By participating in this project you agree to abide by its terms.
