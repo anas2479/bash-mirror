@@ -1,3 +1,6 @@
+
+![Bash-Mirror Logo](lib/assets/logo.svg)
+
 Bash-Mirror is a JS library for creating Bash or Shell-like experiences on your web apps. It even emulates a filesystem to be more realistic.
 
 ----
