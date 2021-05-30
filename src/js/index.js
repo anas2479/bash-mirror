@@ -1,15 +1,8 @@
+import Bash from './Bash'
 
 
 
 
-// Import CMD
-import cmd from './cmd'
-
-
-
-
-
-
-cmd()
-
-
+export{
+    Bash
+} 

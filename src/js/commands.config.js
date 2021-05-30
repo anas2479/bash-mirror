@@ -1,7 +1,8 @@
 // import all the commands
-const fileSystem = require('./commands/file-system/filesystem')
-const help_command = require('./commands/help_command');
-const clear_command = require('./commands/clear-command');
+
+const help = require('./commands/help');
+const clear_command = require('./commands/clear');
+const fileSystem = require('./Filesystem');
 
 
 
@@ -10,44 +11,60 @@ const clear_command = require('./commands/clear-command');
 module.exports = [
     {
         name:"help",
-        function:help_command
+        function:help,
+        args:0,
+        description: `Lists all the existing commands. Used when you need help.⛑`
     },
 
-    {
-        name:"clear",
-        function:clear_command
-    },
+     {
+         name:"clear",
+         function:clear_command,
+         args:0,
+         description:`Clears everything on the screen. Used when you want to start fresh.✨`
+     },
 
     {
         name:'cd',
-        function:fileSystem.cd
+        function:fileSystem.cd,
+        args:[1],
+        description:'Used to move though directories. ⏯'
 
     },
 
     {
         name:"mkdir",
-        function:fileSystem.mkdir
+        args:[1],
+        function:fileSystem.mkdir,
+        description:'Creates a new directory.📁'
     },
 
 
     {
         name:"rmdir",
-        function:fileSystem.rm
+        args:[1],
+        function:fileSystem.rmdir,
+        description:'Used to remove a directory. 🗑'
     },
 
     {
         name:"rm",
-        function:fileSystem.rm
+        args:[1],
+        function:fileSystem.rm,
+        description:'Used to remove a file. 🗑'
     },
 
     {
         name:"ls",
-        function:fileSystem.ls
+        args:[0],
+        function:fileSystem.ls,
+        description:'Lists all the content in the current directory.📃'
     },
 
     {
         name:"touch",
-        function:fileSystem.touch
+        args:[1],
+        function:fileSystem.touch,
+        description:'Creates a new file.🖨'
     }
     
 ]
