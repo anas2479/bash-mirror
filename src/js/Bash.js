@@ -1,12 +1,8 @@
 const _ = require("lodash");
-const { contentWrap } = require("./bashCofig");
 const CommandLine = require("./command-line");
 const OutPut = require("./command-output");
-const allCommands = require("./commands.config");
-const { error } = require("./errors");
-const { printPath } = require("./Filesystem");
+const FileSystem = require('./Filesystem')
 const NewCommand = require("./new-command");
-const RunCommands = require("./run-commands");
 
 
 
@@ -23,11 +19,12 @@ module.exports = class Bash {
      */
     constructor(target, options) {
 
-        this.name = 'Bash'
+        
         /* Check if the developer provided a valid target
         --------------------*/
         if (target instanceof Element) {
             this.element = target;
+            this.name = target.id
         } else {
             console.error(`Bash: Cannot get a valid 'target' element.`);
         }
@@ -42,21 +39,60 @@ module.exports = class Bash {
             this.commandLineSign = options.sign;
         }
 
+        
+        this.contentWrap = document.createElement('div');
+        this.contentWrap.setAttribute('class','bash-mirror-content-wrap')
 
 
-        this.contentWrap = contentWrap;
+        this.fileSystem = new FileSystem(this.contentWrap)
 
-        let FSLocation = `<p class="current-path">${printPath()}/</p>`
+
+        let FSLocation = `<p class="current-path">${this.fileSystem.printPath()}/</p>`
         this.contentWrap.innerHTML = `${FSLocation}`
 
         this.commandLine = new CommandLine(this.commandLineSign);
 
         this.contentWrap.appendChild(this.commandLine.element);
 
-        this.element.appendChild(contentWrap);
+        this.element.appendChild(this.contentWrap);
 
 
-        this.commands = allCommands
+        this.commands = [
+            {
+                name:'help',
+                function:this.help,
+                description:'Lists all the commands and a description of them.'
+            },
+            {
+                name:'clear',
+                function:this.clear,
+                description:'Clears everything on the screen. Used when you want to start fresh.✨',
+                
+            },
+
+            {
+                name:'ls',
+                function:this.fileSystem.ls,
+                description:'Lists all the content in the current folder.📃'
+            },
+            {
+                name:'mkdir',
+                function:this.fileSystem.mkdir,
+                description:'Creates a new directory.📁'
+            },
+            {
+                name:'touch',
+                function:this.fileSystem.touch,
+                description:'Creates a new file.🖨'
+            },
+            {
+                name:'rm',
+                function:this.fileSystem.rm,
+                description:'Used to remove a file. 🗑'
+            },
+
+        ]
+        
 
         this.commandLine.input.addEventListener("keydown", (e) => {
 
@@ -69,11 +105,19 @@ module.exports = class Bash {
                 ---------------------*/
                 if (userInput.length === 0) {
 
-                    new OutPut(``);
+                    new OutPut(this.contentWrap, ``);
 
+                    new OutPut(this.contentWrap,`<p class="current-path">${this.fileSystem.printPath()}/</p>`)
+
+                    this.contentWrap.appendChild(this.commandLine.element);
+                    this.commandLine.input.focus();
+                  
+                /* If the user wrote something 
+                ------------------- */
                 } else {
-                    console.log(this.name +' input:', userInput);
-                    new OutPut(`
+
+                    console.log(this.name +' input:', userInput.slice(1));
+                    new OutPut(this.contentWrap, `
                     <div class="user-input">
                         <span>${options.sign
                         }</span>  <span class="command-keyword">${userInput[0]
@@ -82,45 +126,31 @@ module.exports = class Bash {
                     </div>
                     `);
 
-                    let findCommand = this.commands.find(
-                        (command) => command.name === userInput[0]
-                    );
-
-                    if (findCommand != undefined) {
-
-                        let args = userInput.slice(1)
-
-                        if (findCommand.args === 0 & args.length >= 1) {
-                            error(`<b>${findCommand.name}</b> does not accept arguments.`)
-                        } else {
-                            findCommand.function(args);
-                            console.log(`The arguments '${args}' were fed into the '${findCommand.name}' command.`);
-                        }
-
-                    } else {
-                        error(`Unknown command ☹`);
-                    }
+                    this.userInput = userInput
+                    let args = userInput.slice(1)
+                    this.runCommand(userInput[0],args)
+                    
                 }
-                new OutPut(`<p class="current-path">${printPath()}/</p>`)
-                this.commandLine.input.value = "";
-                this.contentWrap.appendChild(this.commandLine.element);
-                this.commandLine.input.focus();
+    
+                
             }
+
         });
+
+        
     }
 
 
+
+
     /**
-     * Creates a new Bash-Mirror command.
-     * @param {string} cName Command name
-     * @param {Function} cFunction The function to call.
-     * @param {string} cDescription The command description.
-     * @param {number} cArgs The number of arguments command accepts. Default is 0
+     * Creates a new Bash-Mirror command
+     * @param {{ name:string, function:function, description:string}} command 
+     * @returns Bash-Mirror Command
      */
-    newCommand(cName, cFunction, cDescription, cArgs) {
-        let newCommd = new NewCommand(cName, cFunction, cDescription, cArgs)
+    newCommand(command) {
+        let newCommd = new NewCommand(command)
         this.commands.push(newCommd)
-        
     }
 
 
@@ -130,32 +160,84 @@ module.exports = class Bash {
      * @param {string} content For HTML, use template literals
      */
     outPut(content) {
-        new OutPut(`${this.commandLineSign} ${content}`);
+        new OutPut(this.contentWrap,
+            `${this.commandLineSign} ${content}`);
         this.contentWrap.appendChild(this.commandLine.element);
         this.commandLine.input.focus();
     }
 
 
 
-    /**
-     * Creates a new Bash-Mirror error
-     * @param {string} content For HTML, use template literals
-     */
-    error(content) {
-        error(`${this.commandLineSign} ${content}`);
-        this.contentWrap.appendChild(this.commandLine.element);
-        this.commandLine.input.focus();
-    }
-
-
-    /**
-     * Runs a Bash-Mirror command.
-     * @param {string} name The `name` of the command you want to run.
-     * @param {array} args An array of arguments to feed the command's function.
-     */
     runCommand(name, args){
-       new RunCommands(name, args)
-       this.contentWrap.appendChild(this.commandLine.element);
+
+        new OutPut(this.contentWrap,`<p class="current-path">${this.fileSystem.printPath()}/</p>`)
+
+
+        switch (name) {
+            case 'help':
+                this.help()
+                break;
+            case 'clear':
+                this.clear()
+                break;
+
+            case 'ls':
+                this.fileSystem.ls()
+                break;
+
+            case 'cd':
+                this.fileSystem.cd(args)
+                new OutPut(this.contentWrap,`<p class="current-path">${this.fileSystem.printPath()}/</p>`)
+                break;
+
+            case 'mkdir':
+                this.fileSystem.mkdir(args)
+                break;
+
+            case 'touch':
+                this.fileSystem.touch(args)
+                break;
+
+            case 'rm':
+                this.fileSystem.rm(args)
+                break;
+
+            default:
+                let foundC = _.find(this.commands,{name:name})
+                if (foundC != undefined) {
+                    foundC.function(args)
+                }else{
+                    new OutPut(this.contentWrap,`
+                    <p class="bash-mirror-error">Unknown Command ☹</p>
+                    `)
+                    console.error(`Cannot find command.`);
+                }
+                break;
+        }
+
+        this.commandLine.input.value = "";
+        this.contentWrap.appendChild(this.commandLine.element);
+        this.commandLine.input.focus();
+
+        
+        
     }
+
     
+
+    help(){
+        this.commands.forEach((command)=>{
+            new OutPut(this.contentWrap, `
+            <p> <b>${command.name}</b> &nbsp; &nbsp; &nbsp; ${command.description}</p>
+            `)  
+        })  
+    }
+
+
+    clear(){
+        this.contentWrap.innerHTML =' '
+      }
+
 };
+
+
