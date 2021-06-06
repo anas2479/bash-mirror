@@ -1,6 +1,3 @@
-const { contentWrap } = require("./bashCofig")
-
-
 
 
 /**
