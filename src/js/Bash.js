@@ -173,7 +173,7 @@ module.exports = class Bash {
         new OutPut(this.contentWrap,`<p class="current-path">${this.fileSystem.printPath()}/</p>`)
 
 
-        switch (name) {
+        switch (_.toLower(name)) {
             case 'help':
                 this.help()
                 break;
