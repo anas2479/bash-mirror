@@ -35,7 +35,11 @@
     function a(){
         myBash.outPut(`yay is working`)
     }
-    myBash.newCommand('yay', a,`the 🎉 command`)
+    myBash.newCommand({
+        name:'yay', 
+        function:a,
+        description:`the 🎉 command`
+    })
 
     myBash.runCommand('help')
 
