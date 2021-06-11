@@ -240,6 +240,7 @@ module.exports = class Bash {
             let cl = new CommandLine(this.commandLineSign)
 
             this.contentWrap.appendChild(cl.element)
+            cl.input.focus();
     
             cl.input.addEventListener('keydown', e=>{
                 if (e.key === 'Enter') {
