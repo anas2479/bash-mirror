@@ -223,6 +223,46 @@ module.exports = class Bash {
         
     }
 
+
+    /**
+     * @
+     * @param {string} prompt The prompt you want the user to respond to.
+     * @param {function} callback 
+     */
+    input(prompt, callback){
+
+        if (prompt != undefined) {
+
+            this.commandLine.element.remove();
+
+            new OutPut(this.contentWrap,`${this.commandLineSign} ${prompt}`)
+            
+            let cl = new CommandLine(this.commandLineSign)
+
+            this.contentWrap.appendChild(cl.element)
+    
+            cl.input.addEventListener('keydown', e=>{
+                if (e.key === 'Enter') {
+
+                    let userInput = cl.input.value
+                    new OutPut(this.contentWrap,`<p class="current-path">${this.fileSystem.printPath()}/</p>`)
+
+                    
+                    cl.element.remove()
+
+                    this.contentWrap.appendChild(this.commandLine.element);
+                    this.commandLine.input.focus();
+
+                    callback(userInput)
+                }
+            })
+
+        }else{
+            console.error(this.name +':'+` Cannot find prompt.`);
+        }
+        
+    }
+
     
 
     help(){
