@@ -41,7 +41,13 @@
         description:`the 🎉 command`
     })
 
-    myBash.runCommand('help')
-
-    myBash.runCommand('mkdir','test2')
+    myBash.runCommand('yay')
+    myBash.input(`<h4>What's ya name?</h4>`, res=>{
+       
+        if(res === 'anas'){
+            myBash.outPut(`🤬<b>Fuck out of here, ${res}</b`)
+        }
+    })
+    
+    
 </script>
