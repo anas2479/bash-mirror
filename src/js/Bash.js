@@ -98,7 +98,7 @@ module.exports = class Bash {
 
             if (e.key === "Enter") {
 
-                let userInput = _.words(this.commandLine.input.value,/[^ ]+/g);
+                let userInput = _.words(_.toLower(this.commandLine.input.value),/[^ ]+/g);
                 this.commandLine.element.remove();
 
                 /*If the user wrote nothing
@@ -173,7 +173,7 @@ module.exports = class Bash {
         new OutPut(this.contentWrap,`<p class="current-path">${this.fileSystem.printPath()}/</p>`)
 
 
-        switch (_.toLower(name)) {
+        switch (name) {
             case 'help':
                 this.help()
                 break;

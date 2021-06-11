@@ -16,7 +16,7 @@ module.exports = class NewCommand{
         if(command.name != undefined){
 
             
-                newCommand.name = command.name
+                newCommand.name = _.toLower(command.name)
 
                 
                 if(command.function != undefined){
