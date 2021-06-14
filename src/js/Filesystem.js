@@ -161,7 +161,7 @@ module.exports = class FileSystem {
 
       if (check === undefined) {
         let newFolder = {
-          name: folderName,
+          name: _.lowerCase(folderName),
           subfolders: [],
           files: [],
         };
@@ -192,6 +192,46 @@ module.exports = class FileSystem {
     }
   }
 
+/**
+ * Removes a folder.
+ * @param {string} folder 
+ */
+  rmdir(folder){
+    
+    if (folder.length >= 1) {
+
+      let folderName;
+
+      if (Array.isArray(folder)) {
+        folderName = _.join(folder, " ");
+      } else {
+        folderName = folder;
+      }
+
+      let found = _.find(this.currentFolder.subfolders, {name:folderName})
+
+      if (found != undefined) {
+        _.remove(
+          this.currentFolder.subfolders,
+          (f) => f.name === found.name
+        );
+        new OutPut(this.outputEl,
+          `Removed <b>${found.name}</b> folder.🚽`
+          )
+
+      }else{
+        new OutPut(this.outputEl, 
+          `<p class="bash-mirror-error">Folder was not found in the current directory.</p>`
+          )
+      }
+
+    }else{
+      new OutPut(this.outputEl, 
+        `<p class="bash-mirror-error"> Folder name was not provided. ☹</p>`)
+    }
+  }
+
+
   /**
    * Creates a new file with the specified name in the current directory.
    * @param {string} name The file to create.
@@ -212,7 +252,7 @@ module.exports = class FileSystem {
 
       if (check === undefined) {
         let newFile = {
-          name: fileName,
+          name: _.lowerCase(fileName),
         };
 
         this.currentFolder.files.push(newFile);

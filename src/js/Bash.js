@@ -81,6 +81,11 @@ module.exports = class Bash {
                 description:'Creates a new directory.📁'
             },
             {
+                name:'rmdir',
+                function:this.fileSystem.rmdir,
+                description:'Removes a folder.'
+            },
+            {
                 name:'touch',
                 function:this.fileSystem.touch,
                 description:'Creates a new file.🖨'
@@ -98,7 +103,7 @@ module.exports = class Bash {
 
             if (e.key === "Enter") {
 
-                let userInput = _.words(_.toLower(this.commandLine.input.value),/[^ ]+/g);
+                let userInput = _.words(this.commandLine.input.value,/[^ ]+/g);
                 this.commandLine.element.remove();
 
                 /*If the user wrote nothing
@@ -172,8 +177,9 @@ module.exports = class Bash {
 
         new OutPut(this.contentWrap,`<p class="current-path">${this.fileSystem.printPath()}/</p>`)
 
+        let cName = _.lowerCase(name)
 
-        switch (name) {
+        switch (cName) {
             case 'help':
                 this.help()
                 break;
@@ -193,6 +199,10 @@ module.exports = class Bash {
             case 'mkdir':
                 this.fileSystem.mkdir(args)
                 break;
+            
+            case 'rmdir':
+                this.fileSystem.rmdir(args)
+                break;
 
             case 'touch':
                 this.fileSystem.touch(args)
@@ -203,7 +213,7 @@ module.exports = class Bash {
                 break;
 
             default:
-                let foundC = _.find(this.commands,{name:name})
+                let foundC = _.find(this.commands,{name:cName})
                 if (foundC != undefined) {
                     foundC.function(args)
                 }else{
