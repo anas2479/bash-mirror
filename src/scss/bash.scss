@@ -1,10 +1,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-$primary_font: 'Roboto', sans-serif;
-$bash_bg : #30323D;
-$command-keyword: #60b8ff;
-$side_margins : 15px;
+$primary_font: 'Roboto', sans-serif !default;
+$bash_bg : #30323D !default;
+$command-keyword: #60b8ff !default;
+$side_margins : 15px !default;
 
 
 
