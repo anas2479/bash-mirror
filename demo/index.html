@@ -26,7 +26,9 @@
     
     let element = document.getElementById('bash_mirror')
     let myBash = new BashMirror.Bash(element, {
-        sign:'😎'
+        sign:'😎',
+        defaultCommands:true,
+        debug:true
     })
     console.log(myBash)
     // myBash.outPut(`Welcome folks`)
