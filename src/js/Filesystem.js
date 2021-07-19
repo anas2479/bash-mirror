@@ -1,3 +1,4 @@
+const _ = require("lodash");
 const OutPut = require("./command-output");
 const icons = require("./icons");
 
