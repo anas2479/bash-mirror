@@ -100,9 +100,7 @@ $side_margins : 15px !default;
         // command output
         .command-output-container{
             margin-bottom: 15px;
-            &:nth-last-child(){
-                color: rgba(0, 0,0,.4);
-            }
+
         }
 
         ul, ol{
